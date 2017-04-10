@@ -1,0 +1,14 @@
+spring:
+  profiles.active: e2e
+env:
+  tester: Bhawana
+---
+spring:
+  profiles: e2e
+env:
+  url: http://www.sheilaswheels-e2e.com
+---
+spring:
+  profiles: uat
+env:
+  url: http://www.sheilaswheels-uat.com
