@@ -1,14 +1,13 @@
-package com.esure.shielas.wheels.domain;
+package com.esure.sheilas.wheels.domain;
 
-import com.esure.shielas.wheels.domain.enumType.Gender;
-import com.esure.shielas.wheels.domain.enumType.MaritalStatus;
-import com.esure.shielas.wheels.domain.enumType.Title;
+import com.esure.sheilas.wheels.domain.enumType.MaritalStatus;
+import com.esure.sheilas.wheels.domain.enumType.Title;
+import com.esure.sheilas.wheels.domain.enumType.Gender;
 import lombok.Builder;
 
 import java.time.LocalDate;
 
-import static com.esure.shielas.wheels.domain.enumType.Gender.FEMALE;
-import static com.esure.shielas.wheels.domain.enumType.Title.Mrs;
+import static com.esure.sheilas.wheels.domain.enumType.Gender.FEMALE;
 
 @Builder
 public class CustomerDetails {
@@ -27,7 +26,7 @@ public class CustomerDetails {
     private String coverstartdate;
 
     public static class CustomerDetailsBuilder {
-        private Title tile = Mrs;
+        private Title tile = Title.Mrs;
         private String firstName = "Bhawana";
         private String lastName = "Pant";
         private Gender gender = FEMALE;

@@ -1,4 +1,4 @@
-package com.esure.shielas.wheels.annotation;
+package com.esure.sheilas.wheels.annotation;
 
 
 import org.junit.runner.RunWith;

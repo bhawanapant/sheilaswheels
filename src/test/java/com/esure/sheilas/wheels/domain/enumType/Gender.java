@@ -1,4 +1,4 @@
-package com.esure.shielas.wheels.domain.enumType;
+package com.esure.sheilas.wheels.domain.enumType;
 
 public enum Gender {
     MALE("Male"),

@@ -1,4 +1,4 @@
-package com.esure.shielas.wheels.domain;
+package com.esure.sheilas.wheels.domain;
 
 
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.esure.shielas.wheels.config;
+package com.esure.sheilas.wheels.config;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

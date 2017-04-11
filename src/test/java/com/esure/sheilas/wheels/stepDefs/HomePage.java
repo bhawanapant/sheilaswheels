@@ -1,7 +1,7 @@
-package com.esure.shielas.wheels.stepDefs;
+package com.esure.sheilas.wheels.stepDefs;
 
-import com.esure.shielas.wheels.annotation.SpringTestAnnotation;
-import com.esure.shielas.wheels.config.ConfigVariable;
+import com.esure.sheilas.wheels.annotation.SpringTestAnnotation;
+import com.esure.sheilas.wheels.config.ConfigVariable;
 import cucumber.api.java8.En;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
