@@ -13,12 +13,12 @@ import static com.esure.sheilas.wheels.domain.enumType.Gender.FEMALE;
 public class CustomerDetails {
     private Title title;
     private String firstname;
-    private String lastname;
+    private String Surname;
     private Gender gender;
     private LocalDate dob;
     private MaritalStatus maritalstatus;
     private String occupation;
-    private String phonenumber;
+    private int phonenumber;
     private String additionalphonenumber;
     private String emailaddress;
     private String postcode;
@@ -27,10 +27,13 @@ public class CustomerDetails {
 
     public static class CustomerDetailsBuilder {
         private Title tile = Title.Mrs;
-        private String firstName = "Bhawana";
-        private String lastName = "Pant";
-        private Gender gender = FEMALE;
-        private LocalDate dob = LocalDate.of(1980, 11, 25);
+        firstName = "Bhawana";
+        SurName = "Pant";
+        EmailAddress = "upadhyay.bhawana1@gmail.com";
+        phonenumber = 0987876756;
+       // private LocalDate dob = LocalDate.of(1980, 11, 25);
+        
     }
 }
 
+	
