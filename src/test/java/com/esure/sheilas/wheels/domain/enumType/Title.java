@@ -2,16 +2,31 @@ package com.esure.sheilas.wheels.domain.enumType;
 
 
 public enum Title {
-    Mrs,
-    Miss,
-    Ms,
-    Dr,
-    Professor,
-    Lady,
-    Dame,
-    RtHonourable,
-    Mr,
-    Reverend,
-    Sir,
-    Lord
+    MRS("Mrs"),
+    MISS("Miss"),
+    MS("Ms"),
+    DR("Dr"),
+    PROFESSOR("Professor"),
+    LADY("Lady"),
+    DAME("Dame"),
+    RTHONOURABLE("RtHonourable"),
+    MR("Mr"),
+    REVEREND("Reverend"),
+    SIR("Sir"),
+    LORD("Lord")
+    
+    private String value;
+    
+    Title(String value){
+    	this.value = value;
+    }
+    
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return this.getValue();
+    }
 }

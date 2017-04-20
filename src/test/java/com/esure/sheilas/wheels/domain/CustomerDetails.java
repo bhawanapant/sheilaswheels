@@ -16,6 +16,11 @@ public class CustomerDetails {
     private String Surname;
     private Gender gender;
     private LocalDate dob;
+    private boolean ukresident;
+    private String employmentstatus;
+    private String occupation;
+    private String noofchildren;
+    private String residentialstatus;
     private MaritalStatus maritalstatus;
     private String occupation;
     private int phonenumber;
@@ -31,7 +36,7 @@ public class CustomerDetails {
         SurName = "Pant";
         EmailAddress = "upadhyay.bhawana1@gmail.com";
         phonenumber = 0987876756;
-       // private LocalDate dob = LocalDate.of(1980, 11, 25);
+        private LocalDate dob = LocalDate.of(1980, 11, 25);
         
     }
 }
