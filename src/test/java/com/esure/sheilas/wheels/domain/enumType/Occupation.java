@@ -1,15 +1,15 @@
 package com.esure.sheilas.wheels.domain.enumType;
 
-public enum MaritalStatus {
-    MARRIED("Married/Civil Patnership"),
-    SINGLE("Single"),
-    LIVING("Living with Partner"),
-    WIDOWED("Widowed"),
-    DIVORCED("Divorced");
+public enum Occupation {
+    MATURESTUDENT("Mature Student"),
+    MEDICALSTUDENT("Medical Student"),
+    STUDENT("Student"),
+    STUDENTFOREIGN("Student - Foreign"),
+    STUDENTNURSE("Student Nurse");
 
     private String value;
 
-    MaritalStatus(String value) {
+    Occupation(String value) {
         this.value = value;
     }
 
@@ -21,5 +21,6 @@ public enum MaritalStatus {
     public String toString() {
         return this.getValue();
     }
-
 }
+
+

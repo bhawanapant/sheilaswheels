@@ -9,21 +9,16 @@ public enum Title {
     PROFESSOR("Professor"),
     LADY("Lady"),
     DAME("Dame"),
-    RTHONOURABLE("RtHonourable"),
+    RTHONOURABLE("Rt Honourable"),
     MR("Mr"),
     REVEREND("Reverend"),
     SIR("Sir"),
-    LORD("Lord")
-    
+    LORD("Lord");
     private String value;
-    
-    Title(String value){
-    	this.value = value;
-    }
-    
-    public String getValue() {
-        return value;
-    }
+
+    Title(String value) {this.value = value;}
+
+    public String getValue(){ return value;}
 
     @Override
     public String toString() {

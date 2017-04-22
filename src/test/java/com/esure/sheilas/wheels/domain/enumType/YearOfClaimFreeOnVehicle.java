@@ -1,15 +1,14 @@
 package com.esure.sheilas.wheels.domain.enumType;
 
-public enum MaritalStatus {
-    MARRIED("Married/Civil Patnership"),
-    SINGLE("Single"),
-    LIVING("Living with Partner"),
-    WIDOWED("Widowed"),
-    DIVORCED("Divorced");
+public enum YearOfClaimFreeOnVehicle {
+    UNDERONEYEAR("Under 1 Year"),
+    ONEPLUSYEAR("1+ Year"),
+    FOURPLUSYEARS("4+ Years"),
+    FIVEPLUSYEARS("5+ Years");
 
     private String value;
 
-    MaritalStatus(String value) {
+    YearOfClaimFreeOnVehicle(String value) {
         this.value = value;
     }
 
@@ -21,5 +20,6 @@ public enum MaritalStatus {
     public String toString() {
         return this.getValue();
     }
-
 }
+
+

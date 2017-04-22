@@ -14,4 +14,11 @@ public class ConfigVariable {
     @Value("${env.url}")
     private String url;
 
+    public String getUrl() {
+        return url;
+    }
+
+    public String getTester() {
+        return tester;
+    }
 }
