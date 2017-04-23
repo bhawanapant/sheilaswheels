@@ -2,3 +2,7 @@
 .idea/
 sheilas-wheels.iml
 shielas-wheels.iml
+mypatch.patch
+src/test/java/com/esure/sheilas/wheels/stepDefs/GetPolicy.java
+src/test/java/com/esure/sheilas/wheels/utility/
+tools/chromedriver

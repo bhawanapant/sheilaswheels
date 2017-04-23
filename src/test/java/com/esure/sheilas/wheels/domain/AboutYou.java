@@ -18,7 +18,7 @@ import static com.esure.sheilas.wheels.domain.enumType.YearOfClaimFreeOnVehicle.
 public class AboutYou {
     private boolean ukresident;
     private boolean secondoccupation;
-    private NoOfChildrenAtAddress childrenataddress;
+    private NoOfChildrenAtAddress childrenatAddress;
     private ResidentialStatus residentialstatus;
     private CarInHousehold carinhousehold;
     private AccessToAnyVehicle accesofvehicle;

@@ -13,6 +13,8 @@
 
     <properties>
         <cucumber-version>1.2.5</cucumber-version>
+        <selenium.version>3.3.1</selenium.version>
+        <selenium-htmlunit.version></selenium-htmlunit.version>
     </properties>
 
     <parent>
@@ -23,6 +25,11 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>

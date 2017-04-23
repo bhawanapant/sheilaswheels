@@ -11,9 +11,9 @@ Scenario Outline: Browse to Car Insurance page
   Examples:
     |Title|
     |Mrs  |
-    |Miss |
-    |Ms   |
-    |Dr   |
-    |Professor|
-    |Lady     |
-    |Dame     |
+#    |Miss |
+#    |Ms   |
+#    |Dr   |
+#    |Professor|
+#    |Lady     |
+#    |Dame     |
