@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Created by bhawana on 23/04/2017.
+ * Created by bhawana-pant on 23/04/2017.
  */
 public class HomepageObject {
     WebDriver aDriver;
