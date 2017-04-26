@@ -13,8 +13,7 @@
 
     <properties>
         <cucumber-version>1.2.5</cucumber-version>
-        <selenium.version>3.3.1</selenium.version>
-        <selenium-htmlunit.version></selenium-htmlunit.version>
+        <selenium.version>3.4.0</selenium.version>
     </properties>
 
     <parent>
@@ -79,6 +78,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>3.0.1</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

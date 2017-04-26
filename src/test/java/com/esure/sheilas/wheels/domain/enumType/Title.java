@@ -9,7 +9,7 @@ public enum Title {
     PROFESSOR("Professor"),
     LADY("Lady"),
     DAME("Dame"),
-    RTHONOURABLE("Rt Honourable"),
+    RT_HONOURABLE("Rt. Honourable"),
     MR("Mr"),
     REVEREND("Reverend"),
     SIR("Sir"),
@@ -23,5 +23,12 @@ public enum Title {
     @Override
     public String toString() {
         return this.getValue();
+    }
+
+    public static Title get(String value) {
+        for (Title v : values()) {
+            if (v.getValue().equalsIgnoreCase(value))
+                return v;
+        } throw new IllegalArgumentException();
     }
 }

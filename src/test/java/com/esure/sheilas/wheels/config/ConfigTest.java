@@ -1,7 +1,6 @@
 package com.esure.sheilas.wheels.config;
 
 import com.esure.sheilas.wheels.annotation.SpringTestAnnotation;
-import com.esure.sheilas.wheels.domain.CustomerDetails;
 import cucumber.api.java8.En;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +13,6 @@ public class ConfigTest implements En {
 
     @Autowired
     private ConfigVariable configVariable;
-
-    private CustomerDetails customerDetails;
 
     public ConfigTest() {
         Given("^the user is on landing page$", () -> {
