@@ -14,6 +14,8 @@ public class ConfigTest implements En {
     @Autowired
     private ConfigVariable configVariable;
 
+    //private CustomerDetails customerDetails;
+
     public ConfigTest() {
         Given("^the user is on landing page$", () -> {
             LOGGER.info("user landing page is " + configVariable.getUrl());
