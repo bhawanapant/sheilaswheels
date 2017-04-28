@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>sheilaswheels</name>
-    <description>E2E tests for www.sheilaswheels.com with Cucumber, Selenium and Spring Boot</description>
+    <description>E2E tests for www.sheilaswheels.com with Cucumber</description>
 
     <properties>
         <cucumber-version>1.2.5</cucumber-version>
