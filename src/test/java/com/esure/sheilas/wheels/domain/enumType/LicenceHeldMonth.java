@@ -1,14 +1,14 @@
 package com.esure.sheilas.wheels.domain.enumType;
 
-public enum AccessToAnyVehicle {
-    NO("No"),
-    YESACCESSTO("Yes (access to)"),
-    YESOWN("Yes (own)"),
-    YESNAMEDDRIVER("Yes (Named driver)");
+public enum LicenceHeldMonth {
+    LESSTHANONEMONTH("Less than 1 month"),
+    ONEMONTH("1 month"),
+    FOURMONTHS("4 months"),
+    SEVENMONTHS("7 months");
 
     private String value;
 
-    AccessToAnyVehicle(String value) {
+    LicenceHeldMonth(String value) {
         this.value = value;
     }
 

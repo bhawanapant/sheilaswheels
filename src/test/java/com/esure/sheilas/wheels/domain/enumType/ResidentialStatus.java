@@ -1,7 +1,7 @@
 package com.esure.sheilas.wheels.domain.enumType;
 
 public enum ResidentialStatus {
-    HOMEOWNER("Home Owner"),
+    HOMEOWNER("Home owner"),
     RENTING("Renting"),
     LIVINGWITHPARENTS("Living with Parents"),
     HOUSINGASSOCIATION("Housing Association"),

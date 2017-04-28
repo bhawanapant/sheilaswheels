@@ -1,14 +1,14 @@
 package com.esure.sheilas.wheels.domain.enumType;
 
-public enum LicenceHeld {
-    NO("NO"),
-    YESACCESSTO("Yes (access to)"),
-    YESOWN("Yes (own)"),
-    YESNAMEDDRIVER("Yes (Named driver)");
+public enum LicenceHeldYear {
+    LESSTHANONEYEAR("Less than 1 year"),
+    ONEYEAR("1 Year"),
+    FOURYEARS("4 Years"),
+    SEVENYEARS("7 Years");
 
     private String value;
 
-    LicenceHeld(String value) {
+    LicenceHeldYear(String value) {
         this.value = value;
     }
 

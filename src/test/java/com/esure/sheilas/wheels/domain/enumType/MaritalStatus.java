@@ -1,7 +1,7 @@
 package com.esure.sheilas.wheels.domain.enumType;
 
 public enum MaritalStatus {
-    MARRIED("Married/Civil Patnership"),
+    MARRIED("Married/Civil Partnership"),
     SINGLE("Single"),
     LIVING("Living with Partner"),
     WIDOWED("Widowed"),
