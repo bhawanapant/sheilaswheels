@@ -14,6 +14,7 @@ import static java.lang.Runtime.getRuntime;
  * Created by bhawana on 08/01/2017.
  */
 public class Driver extends Thread {
+
     private static WebDriver webDriver = null;
     public enum BrowserName {FIREFOX, GOOGLECHROME}
     private static BrowserName browser = BrowserName.FIREFOX;

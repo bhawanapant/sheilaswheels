@@ -57,8 +57,6 @@ public class GetPolicyStepDefinitions implements En {
 
         aboutYouPage = new AboutYouPage(browser);
         aboutYouPage.populateAboutYouDetails(yourDetails);
-
-
     }
 
     @Then("^she should get the motor policy$")

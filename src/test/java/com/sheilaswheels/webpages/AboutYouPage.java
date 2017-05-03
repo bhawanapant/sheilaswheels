@@ -2,12 +2,14 @@ package com.sheilaswheels.webpages;
 
 import com.sheilaswheels.domain.YourDetails;
 import com.sheilaswheels.domain.YourDetails.AboutYourCar;
+import com.sheilaswheels.domain.enumType.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,19 +22,6 @@ import static com.sheilaswheels.domain.enumType.Gender.MALE;
  */
 public class AboutYouPage {
     private final WebDriver aDriver;
-    private Select employmentStatusSelect;
-    private WebElement otherOccupation;
-    private  Select numberOfChildren;
-    private Select carInHousehold;
-    private Select userOtherVehicle;
-    private Select licenceType;
-    private Select ncdYear;
-    private Select address;
-    private Select selectLicenceHeldYear;
-    private Select selectLicenceHeldMonth;
-    private Select selectResidentialStatus;
-    private Select selectMaritalStatus;
-
 
     @FindBy(how = How.XPATH , using = "//h1[contains(text(),'About you')]")
     private WebElement aboutYouHeading;
@@ -81,12 +70,6 @@ public class AboutYouPage {
 
     @FindBy(how = How.CSS , using = "select[id='residentialStatus']")
     private WebElement residentialStatus;
-
-    @FindBy(how = How.CSS , using = "select[id='renewalMonthContents']")
-    private WebElement renewalMonthContents;
-
-    @FindBy(how = How.CSS , using = "select[id='renewalMonthBuildings']")
-    private WebElement renewalMonthBuildings;
 
     @FindBy(how = How.CSS , using = "select[id='numberOfHouseholdCars']")
     private WebElement numberOfHouseholdCars;
@@ -142,150 +125,140 @@ public class AboutYouPage {
     }
 
     public void populateAboutYouDetails(YourDetails yourDetails) {
-        AboutYourCar aboutYourCar = yourDetails.getAboutYourCar();
-
         waitForAboutYouPageToLoad();
 
-        populateDateOfBirthOfCustomer(yourDetails);
+        YourDetails.CustomerDetails customerDetails = yourDetails.getCustomerDetails();
+        AboutYourCar aboutYourCar = yourDetails.getAboutYourCar();
 
-        selectCustomerIsResidentOfUK(yourDetails);
+        populateDateOfBirthOfCustomer(customerDetails.getDob());
 
-        populateCustomerEmploymentInformation(yourDetails);
+        setCustomerIsUKResidentYesOrNo(customerDetails.isUkResident());
 
-        selectCustomerGender(yourDetails);
+        selectEmploymentStatus(customerDetails.getEmploymentStatus());
 
-        selectMaritalStatusAndNoOfChildrenAtAddress(yourDetails);
+        selectCustomerOccupation(customerDetails.getOccupation());
 
-        selectResidentialStatus(yourDetails);
+        selectIndustry(customerDetails.getIndustry());
 
-        populateCarInformation(aboutYourCar);
+        setOtherOCcupationYesOrNo(customerDetails.isSecondOccupation());
 
-        setCarCoverStartDate(yourDetails);
+        setCustomerGender(customerDetails.getGender());
 
-        selectAddressOfRegisterVehicle(yourDetails);
+        setMaritalStatusOfCustomer(customerDetails.getMaritalStatus());
+
+        setNoOfChildrenAtAddress(customerDetails.getChildrenatAddress());
+
+        selectResidentialStatus(customerDetails.getResidentialStatus());
+
+        selectNumberOfCarInHousehold(aboutYourCar.getCarInHousehold());
+
+        selectUseOfOtherVehicle(aboutYourCar.getAccessOfVehicle());
+
+        selectLicenceType(aboutYourCar.getLicenceType());
+
+        selectLicenceHeldTime(aboutYourCar.getLicenceHeldYear(),aboutYourCar.getLicenceHeldMonth());
+
+        selectNCDYear(aboutYourCar.getNcdYear());
+
+        setRegistrationNumber(aboutYourCar.getRegistrationNo());
+
+        setCarCoverStartDate(aboutYourCar.getCoverStartDate());
+
+        selectAddressOfRegisterVehicle(customerDetails.getPostcode());
+
+        selectCoverDeclarations();
 
         try {
-            selectDeclarationsAndClickOnNextPage();
+            moveToNextPage();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    private void selectDeclarationsAndClickOnNextPage() throws InterruptedException {
-        coverDeclarationYes.click();
-        additionalCoverDeclarationYes.click();
-        nextPage.click();
-        Thread.sleep(20);
-    }
+    private void waitForAboutYouPageToLoad() {
+        new WebDriverWait(aDriver, 10).until(ExpectedConditions.visibilityOf(aboutYouHeading));}
 
-    private void selectAddressOfRegisterVehicle(YourDetails yourDetails) {
-        postCode.sendKeys(yourDetails.getCustomerDetails().getPostcode());
-        findAddress.click();
+    private void selectNCDYear(NCDYear ncdYearValue) {
+        new Select((ncd)).selectByVisibleText(ncdYearValue.getValue());}
 
-        new WebDriverWait(aDriver, 10).until(
-            (ExpectedCondition<Boolean>) webdriver -> addressList.isDisplayed());
-        address = new Select(addressList);
-        address.selectByIndex(4);
-    }
-
-    private void setCarCoverStartDate(YourDetails yourDetails) {
-        LocalDate coverStart = yourDetails.getCustomerDetails().getCoverStartDate();
-        coverStartDay.sendKeys(String.valueOf(coverStart.getDayOfMonth()));
-        coverStartMonth.sendKeys(String.valueOf(coverStart.getMonthValue()));
-        coverStartYear.sendKeys(String.valueOf(coverStart.getYear()));
-    }
-
-    private void populateCarInformation(AboutYourCar aboutYourCar) {
-
-        carInHousehold = new Select(numberOfHouseholdCars);
-        carInHousehold.selectByVisibleText(aboutYourCar
-                        .getCarInHousehold().getValue());
-
-        userOtherVehicle = new Select(useOtherVehicle);
-        userOtherVehicle.selectByVisibleText(aboutYourCar
-                        .getAccessOfVehicle().getValue());
-
-        licenceType = new Select(licenseType);
-        licenceType.selectByVisibleText(aboutYourCar
-                        .getLicenceType().getValue());
-
-        selectLicenceHeldYear = new Select(licenceHeldYear);
-        selectLicenceHeldYear.selectByVisibleText(aboutYourCar
-                        .getLicenceHeldYear().getValue());
+    private void selectLicenceHeldTime(LicenceHeldYear licenceHeldYearValue, LicenceHeldMonth licenceHeldMonthValue) {
+        new Select(licenceHeldYear).selectByVisibleText(licenceHeldYearValue.getValue());
 
         new WebDriverWait(aDriver, 10).until(
             (ExpectedCondition<Boolean>) webdriver -> licenceHeldMonth.isDisplayed());
-
-        selectLicenceHeldMonth = new Select(licenceHeldMonth);
-        selectLicenceHeldMonth.selectByVisibleText(aboutYourCar.getLicenceHeldMonth().getValue());
-
-        ncdYear = new Select((ncd));
-        ncdYear.selectByVisibleText(aboutYourCar
-                        .getNcdYear().getValue());
-        registrationNumber.sendKeys(aboutYourCar.getRegistrationNo());
-
-
+        new Select(licenceHeldMonth).selectByVisibleText(licenceHeldMonthValue.getValue());
     }
 
-    private void selectResidentialStatus(YourDetails yourDetails) {
-        selectResidentialStatus = new Select(residentialStatus);
-        selectResidentialStatus.selectByVisibleText(yourDetails.getCustomerDetails()
-                         .getResidentialStatus().getValue());
+    private void selectLicenceType(LicenceType licenceTypeValue) {
+        new Select(licenseType).selectByVisibleText(licenceTypeValue.getValue());}
+
+    private void selectUseOfOtherVehicle(AccessToAnyVehicle accessOfVehicle) {
+        new Select(useOtherVehicle).selectByVisibleText(accessOfVehicle.getValue());}
+
+    private void selectNumberOfCarInHousehold(CarInHousehold carInHouseholdValue) {
+        new Select(numberOfHouseholdCars).selectByVisibleText(carInHouseholdValue.getValue());}
+
+    private void selectResidentialStatus(ResidentialStatus residentialStatusValue) {
+        new Select(residentialStatus).selectByVisibleText(residentialStatusValue.getValue());}
+
+    private void setNoOfChildrenAtAddress(NoOfChildrenAtAddress childrenatAddress) {
+        new Select(motorNumberOfChildren).selectByVisibleText(childrenatAddress.getValue());}
+
+    private void setMaritalStatusOfCustomer(MaritalStatus maritalStatusValue) {
+        new Select(maritalStatus).selectByVisibleText(maritalStatusValue.getValue());}
+
+    private void selectEmploymentStatus(EmploymentStatus employmentStatusValue) {
+        new Select(employmentStatus).selectByVisibleText(employmentStatusValue.getValue());}
+
+    private void setOtherOCcupationYesOrNo(boolean secondOccupation) {
+        (secondOccupation ? occupationOtherYes : occupationOtherNo).click();}
+
+    private void setCustomerIsUKResidentYesOrNo(boolean customerIsUKResidentFlag) {
+        (customerIsUKResidentFlag ? residentUKYes : residentUKNo).click();}
+
+    private void populateDateOfBirthOfCustomer(LocalDate dob) {
+        dayDOB.sendKeys(String.valueOf(dob.getDayOfMonth()));
+        monthDOB.sendKeys(String.valueOf(dob.getMonthValue()));
+        yearDOB.sendKeys(String.valueOf(dob.getYear()));
     }
 
-    private void selectMaritalStatusAndNoOfChildrenAtAddress(YourDetails yourDetails) {
-        selectMaritalStatus = new Select(maritalStatus);
-        selectMaritalStatus.selectByVisibleText(yourDetails.getCustomerDetails()
-                     .getMaritalStatus().getValue());
-
-        numberOfChildren = new Select(motorNumberOfChildren);
-        numberOfChildren.selectByVisibleText(yourDetails
-                        .getCustomerDetails().getChildrenatAddress().getValue());
+    private void setCarCoverStartDate(LocalDate coverStartDate) {
+        coverStartDay.sendKeys(String.valueOf(coverStartDate.getDayOfMonth()));
+        coverStartMonth.sendKeys(String.valueOf(coverStartDate.getMonthValue()));
+        coverStartYear.sendKeys(String.valueOf(coverStartDate.getYear()));
     }
 
+    private void selectIndustry(String industryValue) {industry.sendKeys(industryValue);}
 
-    private void selectCustomerGender(YourDetails yourDetails) {
-        if (yourDetails.getCustomerDetails().getGender().equals(MALE)) {
-            genderMale.click();
-        }
-        else {
-            genderFemale.click();
-        }
+    private void setRegistrationNumber(String registrationNo) {registrationNumber.sendKeys(registrationNo);}
+
+
+    private void setCustomerGender(Gender gender) {
+        if (gender.equals(MALE)) {genderMale.click();}
+        else {genderFemale.click();}
     }
 
-    private void selectCustomerIsResidentOfUK(YourDetails yourDetails) {
-        WebElement UKResidentFlag =  yourDetails.getCustomerDetails().isUkResident()
-                ? residentUKYes : residentUKNo;
-        UKResidentFlag.click();
-    }
-
-    private void populateCustomerEmploymentInformation(YourDetails yourDetails) {
-        employmentStatusSelect = new Select(employmentStatus);
-        employmentStatusSelect.selectByVisibleText(yourDetails.getCustomerDetails()
-                              .getEmploymentStatus().getValue());
-
+    private void selectCustomerOccupation(String occupationValue) {
         new WebDriverWait(aDriver,10).until(
             (ExpectedCondition<Boolean>) webdriver -> occupation.isDisplayed());
-        occupation.sendKeys(yourDetails.getCustomerDetails().getOccupation());
-
-
-        industry.sendKeys(yourDetails.getCustomerDetails().getIndustry());
-
-        otherOccupation = yourDetails.getCustomerDetails().isSecondOccupation()
-            ? occupationOtherYes : occupationOtherNo;
-        otherOccupation.click();
+        occupation.sendKeys(occupationValue);
     }
 
-    private void populateDateOfBirthOfCustomer(YourDetails yourDetails) {
-        LocalDate DOB = yourDetails.getCustomerDetails().getDob();
-        dayDOB.sendKeys(String.valueOf(DOB.getDayOfMonth()));
-        monthDOB.sendKeys(String.valueOf(DOB.getMonthValue()));
-        yearDOB.sendKeys(String.valueOf(DOB.getYear()));
+    private void selectCoverDeclarations() {
+        coverDeclarationYes.click();
+        additionalCoverDeclarationYes.click();
     }
 
-    private void waitForAboutYouPageToLoad() {
+    private void selectAddressOfRegisterVehicle(String postCodeValue) {
+        postCode.sendKeys(postCodeValue);
+        findAddress.click();
         new WebDriverWait(aDriver, 10).until(
-            (ExpectedCondition<Boolean>) webdriver -> aboutYouHeading.isDisplayed());
+            (ExpectedCondition<Boolean>) webdriver -> addressList.isDisplayed());
+        new Select(addressList).selectByIndex(4);
     }
 
+    private void moveToNextPage() throws InterruptedException {
+        nextPage.click();
+        Thread.sleep(1000);
+    }
 }

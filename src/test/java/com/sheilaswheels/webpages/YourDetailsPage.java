@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -74,19 +74,27 @@ public class YourDetailsPage {
 
     public void populatePage(YourDetails yourDetails) {
         waitForYourDetailsPageToLoad();
+
         CustomerDetails customerDetails = yourDetails.getCustomerDetails();
         MotorClaims motorClaims = yourDetails.getMotorClaims();
         AdditionalPartner additionalPartner = yourDetails.getAdditionalPartners();
 
         setTitle(customerDetails.getTitle().getValue());
+
         setFirstName(customerDetails.getFirstName());
+
         setLastName(customerDetails.getLastName());
+
         setEmail(customerDetails.getEmailAddress());
+
         setConfirmEmail(customerDetails.getEmailAddress());
+
         setPhoneNumber(customerDetails.getPhoneNumber());
+
         setAdditionalPhoneNumber(customerDetails.getAdditionalPhoneNumber());
 
         setMotorClaimYesOrNo(motorClaims.isMotorClaims());
+
         setMotorConvictionYesOrNo(motorClaims.isMotorConviction());
 
         setAdditionalDriverFlag(additionalPartner.isAddPartner());
@@ -94,7 +102,6 @@ public class YourDetailsPage {
         setVisitorReason();
 
         moveToNextPage();
-
     }
 
     public void setTitle(String title) {
@@ -146,7 +153,7 @@ public class YourDetailsPage {
     }
 
     private void waitForYourDetailsPageToLoad() {
-        new WebDriverWait(aDriver, 30).until(
-            (ExpectedCondition<Boolean>) webdriver -> yourDetailHeading.isDisplayed());
+        new WebDriverWait(aDriver, 30)
+            .until(ExpectedConditions.visibilityOf(yourDetailHeading));
     }
 }
