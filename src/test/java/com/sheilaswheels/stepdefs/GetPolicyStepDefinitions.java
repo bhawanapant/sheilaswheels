@@ -1,5 +1,6 @@
 package com.sheilaswheels.stepdefs;
 
+import com.sheilaswheels.config.ConfigVariables;
 import com.sheilaswheels.domain.YourDetails;
 import com.sheilaswheels.domain.enumType.Title;
 import com.sheilaswheels.webpages.AboutYouPage;
@@ -11,6 +12,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.java8.En;
 import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 
@@ -26,17 +28,19 @@ public class GetPolicyStepDefinitions implements En {
     private static Homepage homepage;
     private YourDetailsPage yourDetailsPage;
     private static AboutYouPage aboutYouPage;
-    public static String givenURL = "http://www.sheilaswheels.com";
     private YourDetails yourDetails;
 
+    @Autowired
+    private ConfigVariables configVariables;
+
     @Before
-    public static void setUp() {
+    public void setUp() {
         try {
             browser = getBrowser();
         }catch (IOException e) {
             e.printStackTrace();
         }
-            open(givenURL);
+            open(configVariables.getUrl());
     }
 
     @Given("^user chooses to get car insurance quote$")

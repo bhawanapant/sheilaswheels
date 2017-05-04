@@ -7,7 +7,8 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = {"com.sheilaswheels"},
+        glue = {"com.sheilaswheels.stepdefs",
+                "cucumber.api.spring"},
         plugin = {"pretty", "html:target/cucumber"})
 public class RunCukesTest {
 }

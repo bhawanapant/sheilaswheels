@@ -12,16 +12,11 @@
     <description>E2E tests for www.sheilaswheels.com with Cucumber</description>
 
     <properties>
-        <cucumber-version>1.2.5</cucumber-version>
+        <spring.version>4.3.2.RELEASE</spring.version>
+        <cucumber.version>1.2.5</cucumber.version>
         <selenium.version>3.4.0</selenium.version>
+        <lombok.version>1.16.14</lombok.version>
     </properties>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.2.RELEASE</version>
-        <relativePath /> 
-    </parent>
 
     <dependencies>
         <dependency>
@@ -30,60 +25,52 @@
             <version>${selenium.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
-            <scope>test</scope>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>3.0.1</version>
         </dependency>
 
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>${cucumber-version}</version>
-            <scope>test</scope>
+            <version>${cucumber.version}</version>
         </dependency>
-
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-java8</artifactId>
-            <version>${cucumber-version}</version>
-            <scope>test</scope>
+            <version>${cucumber.version}</version>
         </dependency>
-
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-spring</artifactId>
-            <version>${cucumber-version}</version>
-            <scope>test</scope>
+            <version>${cucumber.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
-            <version>${snakeyaml.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-support</artifactId>
-            <version>3.0.1</version>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -97,10 +84,6 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -135,21 +118,21 @@
 
     <profiles>
         <profile>
-            <id>e2e</id>
+            <id>sw</id>
             <properties>
-                <spring-profile>e2e</spring-profile>
-            </properties>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
-            <id>uat</id>
-            <properties>
-                <spring-profile>uat</spring-profile>
+                <spring-profile>sw</spring-profile>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>esure</id>
+            <properties>
+                <spring-profile>esure</spring-profile>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
             </activation>
 
         </profile>
