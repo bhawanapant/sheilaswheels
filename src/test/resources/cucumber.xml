@@ -10,16 +10,13 @@
 
     <context:property-placeholder location="classpath:config/application.properties"/>
 
-    <beans profile="default">
-        <context:property-placeholder location="classpath:config/application.properties"/>
-    </beans>
 
-    <beans profile="sw">
-        <context:property-placeholder location="classpath:config/application-sw.properties" />
+    <beans  profile="sw">
+        <context:property-placeholder location="classpath:config/application-sw.properties" order="1" ignore-unresolvable="true" />
     </beans>
 
     <beans profile="esure">
-        <context:property-placeholder location="classpath:config/application-esure.properties"/>
+        <context:property-override location="classpath:config/application-esure.properties" order="1" ignore-unresolvable="true"/>
     </beans>
 
 </beans>
