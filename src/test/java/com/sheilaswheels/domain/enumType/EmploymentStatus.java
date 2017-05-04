@@ -25,6 +25,13 @@ public enum EmploymentStatus {
     public String toString() {
         return this.getValue();
     }
+
+    public static EmploymentStatus get(String value) {
+        for (EmploymentStatus v : values()) {
+            if (v.getValue().equalsIgnoreCase(value))
+                return v;
+        } throw new IllegalArgumentException();
+    }
 }
 
 

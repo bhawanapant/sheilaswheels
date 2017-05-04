@@ -16,7 +16,7 @@
     </beans>
 
     <beans profile="esure">
-        <context:property-override location="classpath:config/application-esure.properties" order="1" ignore-unresolvable="true"/>
+        <context:property-placeholder location="classpath:config/application-esure.properties" order="1" ignore-unresolvable="true"/>
     </beans>
 
 </beans>

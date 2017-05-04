@@ -44,6 +44,9 @@ public class AboutYouPage {
     @FindBy(how = How.CSS , using = "select[id='employmentStatus']")
     private WebElement employmentStatus;
 
+    @FindBy(how = How.CSS , using = "select[id='occupationEducation']")
+    private WebElement occupationEducation;
+
     @FindBy(how = How.CSS , using = "input[id='occupationOther']")
     private WebElement occupation;
 
@@ -136,11 +139,7 @@ public class AboutYouPage {
 
         selectEmploymentStatus(customerDetails.getEmploymentStatus());
 
-        selectCustomerOccupation(customerDetails.getOccupation());
-
-        selectIndustry(customerDetails.getIndustry());
-
-        setOtherOCcupationYesOrNo(customerDetails.isSecondOccupation());
+        selectOccupationWithRespetToEmploymentStatus(customerDetails);
 
         setCustomerGender(customerDetails.getGender());
 
@@ -175,6 +174,26 @@ public class AboutYouPage {
         }
     }
 
+    private void selectOccupationWithRespetToEmploymentStatus(YourDetails.CustomerDetails customerDetails) {
+        if (customerDetails.getEmploymentStatus() == EmploymentStatus.INEDUCATION) {
+            selectInEducationOccupation(Occupation.MATURESTUDENT);
+            selectIndustry(customerDetails.getIndustry());
+            setOtherOCcupationYesOrNo(customerDetails.isSecondOccupation());
+        }
+        else
+        if(customerDetails.getEmploymentStatus() == EmploymentStatus.EMPLOYED || customerDetails.getEmploymentStatus() == EmploymentStatus.SELFEMPLOYED || customerDetails.getEmploymentStatus() == EmploymentStatus.VOLUNTARY)
+        {
+            selectCustomerOccupation(customerDetails.getOccupation());
+            selectIndustry(customerDetails.getIndustry());
+            setOtherOCcupationYesOrNo(customerDetails.isSecondOccupation());
+        }
+    }
+
+    private void selectInEducationOccupation(Occupation value) {
+        new WebDriverWait(aDriver, 20).until(ExpectedConditions.visibilityOf(occupationEducation));
+        new Select((occupationEducation)).selectByVisibleText(value.getValue());
+    }
+
     private void waitForAboutYouPageToLoad() {
         new WebDriverWait(aDriver, 10).until(ExpectedConditions.visibilityOf(aboutYouHeading));}
 
@@ -184,8 +203,7 @@ public class AboutYouPage {
     private void selectLicenceHeldTime(LicenceHeldYear licenceHeldYearValue, LicenceHeldMonth licenceHeldMonthValue) {
         new Select(licenceHeldYear).selectByVisibleText(licenceHeldYearValue.getValue());
 
-        new WebDriverWait(aDriver, 10).until(
-            (ExpectedCondition<Boolean>) webdriver -> licenceHeldMonth.isDisplayed());
+        new WebDriverWait(aDriver, 10).until(ExpectedConditions.visibilityOf(licenceHeldMonth));
         new Select(licenceHeldMonth).selectByVisibleText(licenceHeldMonthValue.getValue());
     }
 
@@ -239,9 +257,7 @@ public class AboutYouPage {
     }
 
     private void selectCustomerOccupation(String occupationValue) {
-        new WebDriverWait(aDriver,10).until(
-            (ExpectedCondition<Boolean>) webdriver -> occupation.isDisplayed());
-        occupation.sendKeys(occupationValue);
+        new WebDriverWait(aDriver,10).until(ExpectedConditions.visibilityOf(occupation)).sendKeys(occupationValue);
     }
 
     private void selectCoverDeclarations() {

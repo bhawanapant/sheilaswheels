@@ -3,8 +3,8 @@ package com.sheilaswheels.domain.enumType;
 public enum ResidentialStatus {
     HOMEOWNER("Home owner"),
     RENTING("Renting"),
-    LIVINGWITHPARENTS("Living with Parents"),
-    HOUSINGASSOCIATION("Housing Association"),
+    LIVINGWITHPARENTS("Living with parents"),
+    HOUSINGASSOCIATION("Housing association"),
     OTHER("Other");
 
     private String value;
@@ -20,6 +20,13 @@ public enum ResidentialStatus {
     @Override
     public String toString() {
         return this.getValue();
+    }
+
+    public static ResidentialStatus get(String value) {
+        for (ResidentialStatus v : values()) {
+            if (v.getValue().equalsIgnoreCase(value))
+                return v;
+        } throw new IllegalArgumentException();
     }
 }
 

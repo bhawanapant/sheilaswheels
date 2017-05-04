@@ -2,6 +2,9 @@ package com.sheilaswheels.stepdefs;
 
 import com.sheilaswheels.config.ConfigVariables;
 import com.sheilaswheels.domain.YourDetails;
+import com.sheilaswheels.domain.enumType.EmploymentStatus;
+import com.sheilaswheels.domain.enumType.MaritalStatus;
+import com.sheilaswheels.domain.enumType.ResidentialStatus;
 import com.sheilaswheels.domain.enumType.Title;
 import com.sheilaswheels.webpages.AboutYouPage;
 import com.sheilaswheels.webpages.Homepage;
@@ -40,7 +43,7 @@ public class GetPolicyStepDefinitions implements En {
         }catch (IOException e) {
             e.printStackTrace();
         }
-            open(configVariables.getUrl());
+         open(configVariables.getUrl());
     }
 
     @Given("^user chooses to get car insurance quote$")
@@ -49,11 +52,21 @@ public class GetPolicyStepDefinitions implements En {
         homepage.clickOnMotorQuote();
     }
 
-    @When("^user enter all the necessary details with different title \"([^\"]*)\"$")
-    public void userEnterAllTheNecessaryDetailsWithDifferentTitle(String title) throws Throwable {
+
+    @Then("^she should get the motor policy$")
+    public void sheShouldGetTheMotorPolicy() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        System.out.println("Yet to Implement");
+    }
+
+    @When("^user enter all the necessary details with different title \"([^\"]*)\" And \"([^\"]*)\" ,\"([^\"]*)\",\"([^\"]*)\"$")
+    public void userEnterAllTheNecessaryDetailsWithDifferentTitleAnd(String title, String empStatus, String mStatus, String resStatus) throws Throwable {
         yourDetails = YourDetails.builder()
             .customerDetails(YourDetails.CustomerDetails.builder()
-                .title(Title.get(title)).build())
+                .title(Title.get(title))
+                .employmentStatus(EmploymentStatus.get(empStatus))
+                .maritalStatus(MaritalStatus.get(mStatus))
+                .residentialStatus(ResidentialStatus.get(resStatus)).build())
             .build();
 
         yourDetailsPage = new YourDetailsPage(browser);
@@ -61,11 +74,5 @@ public class GetPolicyStepDefinitions implements En {
 
         aboutYouPage = new AboutYouPage(browser);
         aboutYouPage.populateAboutYouDetails(yourDetails);
-    }
-
-    @Then("^she should get the motor policy$")
-    public void sheShouldGetTheMotorPolicy() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        System.out.println("Yet to Implement");
     }
 }
