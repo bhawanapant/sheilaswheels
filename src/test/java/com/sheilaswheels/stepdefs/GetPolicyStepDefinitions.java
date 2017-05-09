@@ -1,6 +1,7 @@
 package com.sheilaswheels.stepdefs;
 
 import com.sheilaswheels.config.ConfigVariables;
+import com.sheilaswheels.domain.YouCar;
 import com.sheilaswheels.domain.YourDetails;
 import com.sheilaswheels.domain.enumType.EmploymentStatus;
 import com.sheilaswheels.domain.enumType.MaritalStatus;
@@ -8,6 +9,7 @@ import com.sheilaswheels.domain.enumType.ResidentialStatus;
 import com.sheilaswheels.domain.enumType.Title;
 import com.sheilaswheels.webpages.AboutYouPage;
 import com.sheilaswheels.webpages.Homepage;
+import com.sheilaswheels.webpages.YourCarPage;
 import com.sheilaswheels.webpages.YourDetailsPage;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -31,7 +33,10 @@ public class GetPolicyStepDefinitions implements En {
     private static Homepage homepage;
     private YourDetailsPage yourDetailsPage;
     private static AboutYouPage aboutYouPage;
+    private YourCarPage yourCarPage;
     private YourDetails yourDetails;
+    private YouCar yourCar;
+
 
     @Autowired
     private ConfigVariables configVariables;
@@ -69,10 +74,15 @@ public class GetPolicyStepDefinitions implements En {
                 .residentialStatus(ResidentialStatus.get(resStatus)).build())
             .build();
 
+        yourCar = YouCar.builder().build();
+
         yourDetailsPage = new YourDetailsPage(browser);
         yourDetailsPage.populatePage(yourDetails);
 
         aboutYouPage = new AboutYouPage(browser);
         aboutYouPage.populateAboutYouDetails(yourDetails);
+
+        yourCarPage = new YourCarPage(browser);
+        yourCarPage.populateYourCarDetails(yourCar);
     }
 }

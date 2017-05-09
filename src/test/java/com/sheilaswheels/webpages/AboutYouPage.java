@@ -3,12 +3,12 @@ package com.sheilaswheels.webpages;
 import com.sheilaswheels.domain.YourDetails;
 import com.sheilaswheels.domain.YourDetails.AboutYourCar;
 import com.sheilaswheels.domain.enumType.*;
+import com.sheilaswheels.utility.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,6 +22,7 @@ import static com.sheilaswheels.domain.enumType.Gender.MALE;
  */
 public class AboutYouPage {
     private final WebDriver aDriver;
+    private WebDriverWait wait;
 
     @FindBy(how = How.XPATH , using = "//h1[contains(text(),'About you')]")
     private WebElement aboutYouHeading;
@@ -104,19 +105,19 @@ public class AboutYouPage {
     @FindBy(how = How.ID , using = "registrationNumber")
     private WebElement registrationNumber;
 
-    @FindBy(how = How.ID , using = "postCode")
+    @FindBy(how = How.CSS , using = "input#postCode")
     private WebElement postCode;
 
     @FindBy(how = How.XPATH , using = "//input[@id='findAddress']")
     private WebElement findAddress;
 
-    @FindBy(how = How.CSS , using = "select[id='addressList']")
+    @FindBy(how = How.CSS , using = "select#addressList")
     private WebElement addressList;
 
-    @FindBy(how = How.CSS , using = "input[id='coverDeclarations_0']")
+    @FindBy(how = How.CSS , using = "input#coverDeclarations_0")
     private WebElement coverDeclarationYes;
 
-    @FindBy(how = How.CSS , using = "input[id='additionalCoverDeclarations_0']")
+    @FindBy(how = How.CSS , using = "input#additionalCoverDeclarations_0")
     private WebElement additionalCoverDeclarationYes;
 
     @FindBy(how = How.XPATH , using = "//input[@id='next']")
@@ -124,11 +125,12 @@ public class AboutYouPage {
 
     public AboutYouPage(WebDriver driver) {
         this.aDriver = driver;
+        wait = new WebDriverWait(aDriver, 15);
         PageFactory.initElements(driver,this);
     }
 
     public void populateAboutYouDetails(YourDetails yourDetails) {
-        waitForAboutYouPageToLoad();
+        Driver.waitForAboutYouPageToLoad(aboutYouHeading);
 
         YourDetails.CustomerDetails customerDetails = yourDetails.getCustomerDetails();
         AboutYourCar aboutYourCar = yourDetails.getAboutYourCar();
@@ -194,16 +196,13 @@ public class AboutYouPage {
         new Select((occupationEducation)).selectByVisibleText(value.getValue());
     }
 
-    private void waitForAboutYouPageToLoad() {
-        new WebDriverWait(aDriver, 10).until(ExpectedConditions.visibilityOf(aboutYouHeading));}
-
     private void selectNCDYear(NCDYear ncdYearValue) {
         new Select((ncd)).selectByVisibleText(ncdYearValue.getValue());}
 
     private void selectLicenceHeldTime(LicenceHeldYear licenceHeldYearValue, LicenceHeldMonth licenceHeldMonthValue) {
         new Select(licenceHeldYear).selectByVisibleText(licenceHeldYearValue.getValue());
 
-        new WebDriverWait(aDriver, 10).until(ExpectedConditions.visibilityOf(licenceHeldMonth));
+        wait.until(ExpectedConditions.visibilityOf(licenceHeldMonth));
         new Select(licenceHeldMonth).selectByVisibleText(licenceHeldMonthValue.getValue());
     }
 
@@ -266,11 +265,11 @@ public class AboutYouPage {
     }
 
     private void selectAddressOfRegisterVehicle(String postCodeValue) {
+        wait.until(ExpectedConditions.visibilityOf(postCode));
         postCode.sendKeys(postCodeValue);
         findAddress.click();
-        new WebDriverWait(aDriver, 10).until(
-            (ExpectedCondition<Boolean>) webdriver -> addressList.isDisplayed());
-        new Select(addressList).selectByIndex(4);
+        wait.until(ExpectedConditions.visibilityOf(addressList));
+        new Select(addressList).selectByIndex(3);
     }
 
     private void moveToNextPage() throws InterruptedException {

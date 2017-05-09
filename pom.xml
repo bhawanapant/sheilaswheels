@@ -126,15 +126,15 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
-        <profile>
-            <id>esure</id>
-            <properties>
-                <spring-profile>esure</spring-profile>
-            </properties>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
+        <!--<profile>-->
+            <!--<id>esure</id>-->
+            <!--<properties>-->
+                <!--<spring-profile>esure</spring-profile>-->
+            <!--</properties>-->
+            <!--<activation>-->
+                <!--<activeByDefault>false</activeByDefault>-->
+            <!--</activation>-->
 
-        </profile>
+        <!--</profile>-->
     </profiles>
 </project>

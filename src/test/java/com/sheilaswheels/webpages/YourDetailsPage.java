@@ -4,14 +4,13 @@ import com.sheilaswheels.domain.YourDetails;
 import com.sheilaswheels.domain.YourDetails.AdditionalPartner;
 import com.sheilaswheels.domain.YourDetails.CustomerDetails;
 import com.sheilaswheels.domain.YourDetails.MotorClaims;
+import com.sheilaswheels.utility.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by bhawana on 23/04/2017.
@@ -19,7 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class YourDetailsPage {
     private final WebDriver aDriver;
 
-    @FindBy(how = How.XPATH , using = "//h1[contains(text(),'Your details')]")
+        @FindBy(how = How.XPATH , using = "//h1[contains(text(),'Your details')]")
     private WebElement yourDetailHeading;
 
     @FindBy(how = How.CSS , using = "select[id='title']")
@@ -73,7 +72,7 @@ public class YourDetailsPage {
     }
 
     public void populatePage(YourDetails yourDetails) {
-        waitForYourDetailsPageToLoad();
+        Driver.waitForAboutYouPageToLoad(yourDetailHeading);
 
         CustomerDetails customerDetails = yourDetails.getCustomerDetails();
         MotorClaims motorClaims = yourDetails.getMotorClaims();
@@ -150,10 +149,5 @@ public class YourDetailsPage {
 
     public void moveToNextPage() {
         nextPage.click();
-    }
-
-    private void waitForYourDetailsPageToLoad() {
-        new WebDriverWait(aDriver, 30)
-            .until(ExpectedConditions.visibilityOf(yourDetailHeading));
     }
 }
