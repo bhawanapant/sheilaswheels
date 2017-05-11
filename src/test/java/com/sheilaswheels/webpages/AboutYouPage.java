@@ -9,9 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.LocalDate;
 
@@ -22,7 +20,6 @@ import static com.sheilaswheels.domain.enumType.Gender.MALE;
  */
 public class AboutYouPage {
     private final WebDriver aDriver;
-    private WebDriverWait wait;
 
     @FindBy(how = How.XPATH , using = "//h1[contains(text(),'About you')]")
     private WebElement aboutYouHeading;
@@ -125,12 +122,11 @@ public class AboutYouPage {
 
     public AboutYouPage(WebDriver driver) {
         this.aDriver = driver;
-        wait = new WebDriverWait(aDriver, 15);
         PageFactory.initElements(driver,this);
     }
 
     public void populateAboutYouDetails(YourDetails yourDetails) {
-        Driver.waitForAboutYouPageToLoad(aboutYouHeading);
+        Driver.waitForPageElementToLoad(aboutYouHeading);
 
         YourDetails.CustomerDetails customerDetails = yourDetails.getCustomerDetails();
         AboutYourCar aboutYourCar = yourDetails.getAboutYourCar();
@@ -192,7 +188,7 @@ public class AboutYouPage {
     }
 
     private void selectInEducationOccupation(Occupation value) {
-        new WebDriverWait(aDriver, 20).until(ExpectedConditions.visibilityOf(occupationEducation));
+        Driver.waitForPageElementToLoad(occupationEducation);
         new Select((occupationEducation)).selectByVisibleText(value.getValue());
     }
 
@@ -201,8 +197,7 @@ public class AboutYouPage {
 
     private void selectLicenceHeldTime(LicenceHeldYear licenceHeldYearValue, LicenceHeldMonth licenceHeldMonthValue) {
         new Select(licenceHeldYear).selectByVisibleText(licenceHeldYearValue.getValue());
-
-        wait.until(ExpectedConditions.visibilityOf(licenceHeldMonth));
+        Driver.waitForPageElementToLoad(licenceHeldMonth);
         new Select(licenceHeldMonth).selectByVisibleText(licenceHeldMonthValue.getValue());
     }
 
@@ -256,7 +251,8 @@ public class AboutYouPage {
     }
 
     private void selectCustomerOccupation(String occupationValue) {
-        new WebDriverWait(aDriver,10).until(ExpectedConditions.visibilityOf(occupation)).sendKeys(occupationValue);
+        Driver.waitForPageElementToLoad(occupation);
+        occupation.sendKeys(occupationValue);
     }
 
     private void selectCoverDeclarations() {
@@ -265,15 +261,14 @@ public class AboutYouPage {
     }
 
     private void selectAddressOfRegisterVehicle(String postCodeValue) {
-        wait.until(ExpectedConditions.visibilityOf(postCode));
+        Driver.waitForPageElementToLoad(postCode);
         postCode.sendKeys(postCodeValue);
         findAddress.click();
-        wait.until(ExpectedConditions.visibilityOf(addressList));
+        Driver.waitForPageElementToLoad(addressList);
         new Select(addressList).selectByIndex(3);
     }
 
     private void moveToNextPage() throws InterruptedException {
         nextPage.click();
-        Thread.sleep(1000);
     }
 }

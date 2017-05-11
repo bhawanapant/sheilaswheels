@@ -1,0 +1,14 @@
+package com.sheilaswheels.webpages;
+
+import com.sheilaswheels.domain.YourQuote.BreakdownOption;
+import org.openqa.selenium.WebDriver;
+
+/**
+ * Created by bhawana on 11/05/2017.
+ */
+public class BreakdownOptionPage {
+    WebDriver aDriver;
+
+    public void selectBreakdownOptionsAndRecalculateQuote(BreakdownOption breakdownOption) {
+    }
+}

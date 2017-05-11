@@ -92,10 +92,12 @@ public class YourCarPage {
     }
 
     public void populateYourCarDetails(YouCar yourCar) {
-        Driver.waitForAboutYouPageToLoad(yourCarHeading);
+        Driver.waitForPageElementToLoad(yourCarHeading);
 
         populateLegalOwnerOfCar(yourCar.getLegalOwnerOfCar());
+
         populateRegisteredKeeperOfCar(yourCar.getRegisterKeeperOfCar());
+
         populateUsageOfCar(yourCar.getUseOfCar());
         populateSecurityDeviceInformation(yourCar.getSecurityDevice());
         populateEstimatedValueOfCar(yourCar.getEstimateValue());

@@ -31,13 +31,6 @@ public enum CarKeptOvernight {
     public String toString() {
         return this.getValue();
     }
-
-    public static CarKeptOvernight get(String value) {
-        for (CarKeptOvernight v : values()) {
-            if (v.getValue().equalsIgnoreCase(value))
-                return v;
-        } throw new IllegalArgumentException();
-    }
 }
 
 

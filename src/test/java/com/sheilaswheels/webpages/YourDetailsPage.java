@@ -72,7 +72,7 @@ public class YourDetailsPage {
     }
 
     public void populatePage(YourDetails yourDetails) {
-        Driver.waitForAboutYouPageToLoad(yourDetailHeading);
+        Driver.waitForPageElementToLoad(yourDetailHeading);
 
         CustomerDetails customerDetails = yourDetails.getCustomerDetails();
         MotorClaims motorClaims = yourDetails.getMotorClaims();

@@ -1,12 +1,11 @@
 package com.sheilaswheels.webpages;
 
+import com.sheilaswheels.utility.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by bhawana on 23/04/2017.
@@ -23,7 +22,7 @@ public class Homepage {
     }
 
     public void clickOnMotorQuote() {
-        new WebDriverWait(aDriver,10)
-            .until((ExpectedConditions.visibilityOf(motorLink))).click();
+        Driver.waitForPageElementToLoad(motorLink);
+        motorLink.click();
     }
 }

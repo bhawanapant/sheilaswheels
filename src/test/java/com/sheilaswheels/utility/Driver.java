@@ -42,7 +42,7 @@ public class Driver extends Thread {
                     break;
             }
 
-            //quitBrowserOnceTestIsComplete();
+            quitBrowserOnceTestIsComplete();
         }
         return webDriver;
     }
@@ -55,8 +55,8 @@ public class Driver extends Thread {
         webDriver.navigate().to(aURL);
     }
 
-    public static void waitForAboutYouPageToLoad(WebElement checkingElement) {
-        wait = new WebDriverWait(webDriver,15);
+    public static void waitForPageElementToLoad(WebElement checkingElement) {
+        wait = new WebDriverWait(webDriver,30);
         wait.until(ExpectedConditions.visibilityOf(checkingElement));}
 }
 
