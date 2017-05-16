@@ -1,9 +1,9 @@
 package com.sheilaswheels.webpages;
 
-import com.sheilaswheels.domain.YourDetails;
-import com.sheilaswheels.domain.YourDetails.AboutYourCar;
+import com.sheilaswheels.domain.InsuranceData;
 import com.sheilaswheels.domain.enumType.*;
 import com.sheilaswheels.utility.Driver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,6 +20,8 @@ import static com.sheilaswheels.domain.enumType.Gender.MALE;
  */
 public class AboutYouPage {
     private final WebDriver aDriver;
+    private JavascriptExecutor javascriptExecutor;
+
 
     @FindBy(how = How.XPATH , using = "//h1[contains(text(),'About you')]")
     private WebElement aboutYouHeading;
@@ -102,9 +104,6 @@ public class AboutYouPage {
     @FindBy(how = How.ID , using = "registrationNumber")
     private WebElement registrationNumber;
 
-    @FindBy(how = How.CSS , using = "input#postCode")
-    private WebElement postCode;
-
     @FindBy(how = How.XPATH , using = "//input[@id='findAddress']")
     private WebElement findAddress;
 
@@ -122,14 +121,15 @@ public class AboutYouPage {
 
     public AboutYouPage(WebDriver driver) {
         this.aDriver = driver;
+        javascriptExecutor = (JavascriptExecutor)aDriver;
         PageFactory.initElements(driver,this);
     }
 
-    public void populateAboutYouDetails(YourDetails yourDetails) {
+    public void populateAboutYouDetails(InsuranceData.YourDetails yourDetails) {
         Driver.waitForPageElementToLoad(aboutYouHeading);
 
-        YourDetails.CustomerDetails customerDetails = yourDetails.getCustomerDetails();
-        AboutYourCar aboutYourCar = yourDetails.getAboutYourCar();
+        InsuranceData.YourDetails.CustomerDetails customerDetails = yourDetails.getCustomerDetails();
+        InsuranceData.YourDetails.AboutYourCar aboutYourCar = yourDetails.getAboutYourCar();
 
         populateDateOfBirthOfCustomer(customerDetails.getDob());
 
@@ -172,7 +172,7 @@ public class AboutYouPage {
         }
     }
 
-    private void selectOccupationWithRespetToEmploymentStatus(YourDetails.CustomerDetails customerDetails) {
+    private void selectOccupationWithRespetToEmploymentStatus(InsuranceData.YourDetails.CustomerDetails customerDetails) {
         if (customerDetails.getEmploymentStatus() == EmploymentStatus.INEDUCATION) {
             selectInEducationOccupation(Occupation.MATURESTUDENT);
             selectIndustry(customerDetails.getIndustry());
@@ -188,6 +188,7 @@ public class AboutYouPage {
     }
 
     private void selectInEducationOccupation(Occupation value) {
+        //Driver.waitAndClickOnTheElementUntilSucced(occupationEducation);
         Driver.waitForPageElementToLoad(occupationEducation);
         new Select((occupationEducation)).selectByVisibleText(value.getValue());
     }
@@ -261,8 +262,8 @@ public class AboutYouPage {
     }
 
     private void selectAddressOfRegisterVehicle(String postCodeValue) {
-        Driver.waitForPageElementToLoad(postCode);
-        postCode.sendKeys(postCodeValue);
+        javascriptExecutor.executeScript("document.getElementById('postCode').value='"+ postCodeValue+"'");
+
         findAddress.click();
         Driver.waitForPageElementToLoad(addressList);
         new Select(addressList).selectByIndex(3);
@@ -270,5 +271,6 @@ public class AboutYouPage {
 
     private void moveToNextPage() throws InterruptedException {
         nextPage.click();
+        Thread.sleep(1000);
     }
 }

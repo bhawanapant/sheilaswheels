@@ -1,6 +1,6 @@
 package com.sheilaswheels.webpages;
 
-import com.sheilaswheels.domain.YourQuote.BreakdownOption;
+import com.sheilaswheels.domain.InsuranceData;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -9,6 +9,6 @@ import org.openqa.selenium.WebDriver;
 public class BreakdownOptionPage {
     WebDriver aDriver;
 
-    public void selectBreakdownOptionsAndRecalculateQuote(BreakdownOption breakdownOption) {
+    public void selectBreakdownOptionsAndRecalculateQuote(InsuranceData.YourQuote yourQuote) {
     }
 }

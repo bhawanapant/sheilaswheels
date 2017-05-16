@@ -1,6 +1,6 @@
 package com.sheilaswheels.webpages;
 
-import com.sheilaswheels.domain.YouCar;
+import com.sheilaswheels.domain.InsuranceData;
 import com.sheilaswheels.domain.enumType.*;
 import com.sheilaswheels.utility.Driver;
 import org.openqa.selenium.WebDriver;
@@ -91,7 +91,7 @@ public class YourCarPage {
         PageFactory.initElements(aDriver,this);
     }
 
-    public void populateYourCarDetails(YouCar yourCar) {
+    public void populateYourCarDetails(InsuranceData.YouCar yourCar) {
         Driver.waitForPageElementToLoad(yourCarHeading);
 
         populateLegalOwnerOfCar(yourCar.getLegalOwnerOfCar());

@@ -1,6 +1,6 @@
 package com.sheilaswheels.webpages;
 
-import com.sheilaswheels.domain.YourQuote.BoostInsuranceCover;
+import com.sheilaswheels.domain.InsuranceData;
 import com.sheilaswheels.domain.enumType.BoostCover;
 import com.sheilaswheels.utility.Driver;
 import org.openqa.selenium.JavascriptExecutor;
@@ -79,18 +79,6 @@ public class YourQuotePage {
         javascriptExecutor = (JavascriptExecutor)aDriver;
     }
 
-    public void selectExtraBoostOptionsAndRecalculateQuote(BoostInsuranceCover boostInsuranceCover) {
-        Driver.waitForPageElementToLoad(thankYouMessage);
-       // getAnnualPremiumFromQuote(yourQuote);
-        boostYourCoverWithOptionalExtras(boostInsuranceCover.getBoostCover());
-        clickOnRecalculate();
-        waitForInsuranceToBeRecalculated();
-        selectNCDProtection(boostInsuranceCover.isNcdProtection());
-        selectYourExcessProtection();
-        moveToNextPage();
-
-    }
-
     private void waitForInsuranceToBeRecalculated() {
         new WebDriverWait(aDriver,30).until(ExpectedConditions.invisibilityOf(recalculateDialog));
     }
@@ -136,9 +124,20 @@ public class YourQuotePage {
                     }
     }
 
-    private void getAnnualPremiumFromQuote(BoostInsuranceCover boostInsuranceCover) {
+    private void getAnnualPremiumFromQuote(InsuranceData.YourQuote yourQuote) {
         System.out.println(annualPremium.getText());
-        boostInsuranceCover.setAnnualPremium(Double.parseDouble(annualPremium.getText()));
-        System.out.println(boostInsuranceCover.getAnnualPremium());
+        yourQuote.getBoostInsuranceCover().setAnnualPremium(Double.parseDouble(annualPremium.getText()));
+        System.out.println(yourQuote.getBoostInsuranceCover().getAnnualPremium());
+    }
+
+    public void selectExtraBoostOptionsAndRecalculateQuote(InsuranceData.YourQuote yourQuote) {
+        Driver.waitForPageElementToLoad(thankYouMessage);
+        // getAnnualPremiumFromQuote(yourQuote);
+        boostYourCoverWithOptionalExtras(yourQuote.getBoostInsuranceCover().getBoostCover());
+        clickOnRecalculate();
+        waitForInsuranceToBeRecalculated();
+        selectNCDProtection(yourQuote.getBoostInsuranceCover().isNcdProtection());
+        selectYourExcessProtection();
+        moveToNextPage();
     }
 }

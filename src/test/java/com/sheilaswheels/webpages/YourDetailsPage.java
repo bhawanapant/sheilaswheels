@@ -1,9 +1,6 @@
 package com.sheilaswheels.webpages;
 
-import com.sheilaswheels.domain.YourDetails;
-import com.sheilaswheels.domain.YourDetails.AdditionalPartner;
-import com.sheilaswheels.domain.YourDetails.CustomerDetails;
-import com.sheilaswheels.domain.YourDetails.MotorClaims;
+import com.sheilaswheels.domain.InsuranceData;
 import com.sheilaswheels.utility.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +15,7 @@ import org.openqa.selenium.support.ui.Select;
 public class YourDetailsPage {
     private final WebDriver aDriver;
 
-        @FindBy(how = How.XPATH , using = "//h1[contains(text(),'Your details')]")
+    @FindBy(how = How.XPATH , using = "//h1[contains(text(),'Your details')]")
     private WebElement yourDetailHeading;
 
     @FindBy(how = How.CSS , using = "select[id='title']")
@@ -71,12 +68,12 @@ public class YourDetailsPage {
         PageFactory.initElements(driver,this);
     }
 
-    public void populatePage(YourDetails yourDetails) {
+    public void populatePage(InsuranceData.YourDetails yourDetails) {
         Driver.waitForPageElementToLoad(yourDetailHeading);
 
-        CustomerDetails customerDetails = yourDetails.getCustomerDetails();
-        MotorClaims motorClaims = yourDetails.getMotorClaims();
-        AdditionalPartner additionalPartner = yourDetails.getAdditionalPartners();
+        InsuranceData.YourDetails.CustomerDetails customerDetails = yourDetails.getCustomerDetails();
+        InsuranceData.YourDetails.MotorClaims motorClaims = yourDetails.getMotorClaims();
+        InsuranceData.YourDetails.AdditionalPartner additionalPartner = yourDetails.getAdditionalPartners();
 
         setTitle(customerDetails.getTitle().getValue());
 
