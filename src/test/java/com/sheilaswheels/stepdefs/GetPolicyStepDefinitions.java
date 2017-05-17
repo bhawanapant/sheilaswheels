@@ -2,6 +2,7 @@ package com.sheilaswheels.stepdefs;
 
 import com.sheilaswheels.config.ConfigVariables;
 import com.sheilaswheels.domain.InsuranceData;
+import com.sheilaswheels.domain.InsuranceData.*;
 import com.sheilaswheels.domain.enumType.EmploymentStatus;
 import com.sheilaswheels.domain.enumType.MaritalStatus;
 import com.sheilaswheels.domain.enumType.ResidentialStatus;
@@ -18,8 +19,6 @@ import cucumber.api.java8.En;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -33,12 +32,9 @@ import static com.sheilaswheels.utility.Driver.open;
  */
 public class GetPolicyStepDefinitions implements En {
 
-    private Logger LOGGER = LoggerFactory.getLogger(GetPolicyStepDefinitions.class);
-
     private WebDriver browser;
-    private InsuranceData.YourDetails yourDetails;
-    private InsuranceData.YouCar yourCar;
-    private InsuranceData.YourQuote yourQuote;
+    private InsuranceData insuranceData;
+
 
     private Homepage homepage;
     private YourDetailsPage yourDetailsPage;
@@ -46,7 +42,6 @@ public class GetPolicyStepDefinitions implements En {
     private YourCarPage yourCarPage;
     private YourQuotePage yourQuotePage;
     private BreakdownOptionPage breakdownOptionPage;
-    private String csvPath = "/Users/mohanpant/repos/sheilaswheels/src/test/resources/dataFile.csv";
 
     @Autowired
     private ConfigVariables configVariables;
@@ -75,35 +70,39 @@ public class GetPolicyStepDefinitions implements En {
     }
 
     @When("^user enter all the necessary details with different title \"([^\"]*)\" And \"([^\"]*)\" ,\"([^\"]*)\",\"([^\"]*)\"$")
-    public void userEnterAllTheNecessaryDetailsWithDifferentTitleAnd(String title, String empStatus, String mStatus, String resStatus) throws Throwable {
-        yourDetails = InsuranceData.YourDetails.builder()
-            .customerDetails(InsuranceData.YourDetails.CustomerDetails.builder()
-                .title(Title.get(title))
+    public void userEnterAllTheNecessaryDetailsWithDifferentTitleAnd(
+        String title, String empStatus, String mStatus, String resStatus) throws Throwable {
+
+        insuranceData = InsuranceData.builder()
+            .yourDetails(YourDetails.builder()
+                .title(Title.get(title)).build())
+            .aboutYou(AboutYou.builder()
                 .employmentStatus(EmploymentStatus.get(empStatus))
                 .maritalStatus(MaritalStatus.get(mStatus))
                 .residentialStatus(ResidentialStatus.get(resStatus)).build())
+            .yourCar(YourCar.builder().build())
+            .motorClaims(MotorClaims.builder().build())
+            .additionalPartner(AdditionalPartner.builder().build())
+            .boostInsuranceCover(BoostInsuranceCover.builder().build())
             .build();
 
-        yourCar = InsuranceData.YouCar.builder().build();
-        yourQuote = InsuranceData.YourQuote.builder().build();
 
-
-        LogFile.getDetailsOfObjectUsedInLogFile(yourDetails);
+        LogFile.getDetailsOfObjectUsedInLogFile(insuranceData.getYourDetails());
 
         yourDetailsPage = new YourDetailsPage(browser);
-        yourDetailsPage.populatePage(yourDetails);
+        yourDetailsPage.populateYourDetails(insuranceData);
 
         aboutYouPage = new AboutYouPage(browser);
-        aboutYouPage.populateAboutYouDetails(yourDetails);
+        aboutYouPage.populateAboutYouDetails(insuranceData);
 
         yourCarPage = new YourCarPage(browser);
-        yourCarPage.populateYourCarDetails(yourCar);
+        yourCarPage.populateYourCarDetails(insuranceData);
 
         yourQuotePage = new YourQuotePage(browser);
-        yourQuotePage.selectExtraBoostOptionsAndRecalculateQuote(yourQuote);
+        yourQuotePage.selectExtraBoostOptionsAndRecalculateQuote(insuranceData);
 
-        breakdownOptionPage = new BreakdownOptionPage();
-        breakdownOptionPage.selectBreakdownOptionsAndRecalculateQuote(yourQuote);
+        breakdownOptionPage = new BreakdownOptionPage(browser);
+        breakdownOptionPage.selectBreakdownOptionsAndRecalculateQuote(insuranceData);
 
     }
 

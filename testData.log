@@ -1,0 +1,132 @@
+49460 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
+  "title" : "MRS",
+  "firstName" : "Bhawana",
+  "lastName" : "Pant",
+  "emailAddress" : "no.one@esure.com",
+  "phoneNumber" : "08998478869",
+  "additionalPhoneNumber" : "07667898878",
+  "addPartner" : false,
+  "mainDriver" : true,
+  "firstTimeBuyer" : true
+}
+18141 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
+  "title" : "MRS",
+  "firstName" : "Bhawana",
+  "lastName" : "Pant",
+  "emailAddress" : "no.one@esure.com",
+  "phoneNumber" : "08998478869",
+  "additionalPhoneNumber" : "07667898878",
+  "addPartner" : false,
+  "mainDriver" : true,
+  "firstTimeBuyer" : true
+}
+46178 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
+  "title" : "MISS",
+  "firstName" : "Bhawana",
+  "lastName" : "Pant",
+  "emailAddress" : "no.one@esure.com",
+  "phoneNumber" : "08998478869",
+  "additionalPhoneNumber" : "07667898878",
+  "addPartner" : false,
+  "mainDriver" : true,
+  "firstTimeBuyer" : true
+}
+73441 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
+  "title" : "MS",
+  "firstName" : "Bhawana",
+  "lastName" : "Pant",
+  "emailAddress" : "no.one@esure.com",
+  "phoneNumber" : "08998478869",
+  "additionalPhoneNumber" : "07667898878",
+  "addPartner" : false,
+  "mainDriver" : true,
+  "firstTimeBuyer" : true
+}
+99329 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
+  "title" : "DR",
+  "firstName" : "Bhawana",
+  "lastName" : "Pant",
+  "emailAddress" : "no.one@esure.com",
+  "phoneNumber" : "08998478869",
+  "additionalPhoneNumber" : "07667898878",
+  "addPartner" : false,
+  "mainDriver" : true,
+  "firstTimeBuyer" : true
+}
+125682 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
+  "title" : "PROFESSOR",
+  "firstName" : "Bhawana",
+  "lastName" : "Pant",
+  "emailAddress" : "no.one@esure.com",
+  "phoneNumber" : "08998478869",
+  "additionalPhoneNumber" : "07667898878",
+  "addPartner" : false,
+  "mainDriver" : true,
+  "firstTimeBuyer" : true
+}
+151206 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
+  "title" : "LADY",
+  "firstName" : "Bhawana",
+  "lastName" : "Pant",
+  "emailAddress" : "no.one@esure.com",
+  "phoneNumber" : "08998478869",
+  "additionalPhoneNumber" : "07667898878",
+  "addPartner" : false,
+  "mainDriver" : true,
+  "firstTimeBuyer" : true
+}
+20523 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
+  "title" : "MRS",
+  "firstName" : "Bhawana",
+  "lastName" : "Pant",
+  "emailAddress" : "no.one@esure.com",
+  "phoneNumber" : "08998478869",
+  "additionalPhoneNumber" : "07667898878",
+  "addPartner" : false,
+  "mainDriver" : true,
+  "firstTimeBuyer" : true
+}
+176981 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
+  "title" : "MISS",
+  "firstName" : "Bhawana",
+  "lastName" : "Pant",
+  "emailAddress" : "no.one@esure.com",
+  "phoneNumber" : "08998478869",
+  "additionalPhoneNumber" : "07667898878",
+  "addPartner" : false,
+  "mainDriver" : true,
+  "firstTimeBuyer" : true
+}
+230362 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
+  "title" : "MS",
+  "firstName" : "Bhawana",
+  "lastName" : "Pant",
+  "emailAddress" : "no.one@esure.com",
+  "phoneNumber" : "08998478869",
+  "additionalPhoneNumber" : "07667898878",
+  "addPartner" : false,
+  "mainDriver" : true,
+  "firstTimeBuyer" : true
+}
+280283 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
+  "title" : "DR",
+  "firstName" : "Bhawana",
+  "lastName" : "Pant",
+  "emailAddress" : "no.one@esure.com",
+  "phoneNumber" : "08998478869",
+  "additionalPhoneNumber" : "07667898878",
+  "addPartner" : false,
+  "mainDriver" : true,
+  "firstTimeBuyer" : true
+}
+323942 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
+  "title" : "PROFESSOR",
+  "firstName" : "Bhawana",
+  "lastName" : "Pant",
+  "emailAddress" : "no.one@esure.com",
+  "phoneNumber" : "08998478869",
+  "additionalPhoneNumber" : "07667898878",
+  "addPartner" : false,
+  "mainDriver" : true,
+  "firstTimeBuyer" : true
+}

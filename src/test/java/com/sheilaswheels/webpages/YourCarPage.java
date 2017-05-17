@@ -91,13 +91,13 @@ public class YourCarPage {
         PageFactory.initElements(aDriver,this);
     }
 
-    public void populateYourCarDetails(InsuranceData.YouCar yourCar) {
+    public void populateYourCarDetails(InsuranceData insuranceData) {
+        InsuranceData.YourCar yourCar = insuranceData.getYourCar();
         Driver.waitForPageElementToLoad(yourCarHeading);
 
         populateLegalOwnerOfCar(yourCar.getLegalOwnerOfCar());
 
         populateRegisteredKeeperOfCar(yourCar.getRegisterKeeperOfCar());
-
         populateUsageOfCar(yourCar.getUseOfCar());
         populateSecurityDeviceInformation(yourCar.getSecurityDevice());
         populateEstimatedValueOfCar(yourCar.getEstimateValue());

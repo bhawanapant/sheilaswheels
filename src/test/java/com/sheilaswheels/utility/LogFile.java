@@ -4,24 +4,22 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.sheilaswheels.domain.InsuranceData;
-
-import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
+import com.sheilaswheels.stepdefs.GetPolicyStepDefinitions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by bhawana on 12/05/2017.
  */
 public class LogFile {
-        private static ObjectMapper mapper;
+    private static ObjectMapper mapper;
+    private static Logger LOGGER = LoggerFactory.getLogger(GetPolicyStepDefinitions.class);
 
-        public static void getDetailsOfObjectUsedInLogFile(InsuranceData.YourDetails yourDetails) throws JsonProcessingException {
+
+    public static void getDetailsOfObjectUsedInLogFile(InsuranceData insuranceData) throws JsonProcessingException {
             mapper = new ObjectMapper();
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
-            LOGGER.info(" The data for yourDetails is " + mapper.writeValueAsString(yourDetails));
+            LOGGER.debug(" The data for Motor Insurance" +
+                " is " + mapper.writeValueAsString(insuranceData));
         }
-
-//        public static void getTheErrorMessageInDetail(String message) throws JsonProcessingException {
-//            mapper = new ObjectMapper();
-//            mapper.enable(SerializationFeature.INDENT_OUTPUT);
-//            LOGGER.info(" Error Message Occur" + mapper.writeValueAsString(message));
-//    }
 }

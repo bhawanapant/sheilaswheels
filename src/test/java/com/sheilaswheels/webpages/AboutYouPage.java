@@ -125,43 +125,42 @@ public class AboutYouPage {
         PageFactory.initElements(driver,this);
     }
 
-    public void populateAboutYouDetails(InsuranceData.YourDetails yourDetails) {
+    public void populateAboutYouDetails(InsuranceData insuranceData) {
         Driver.waitForPageElementToLoad(aboutYouHeading);
 
-        InsuranceData.YourDetails.CustomerDetails customerDetails = yourDetails.getCustomerDetails();
-        InsuranceData.YourDetails.AboutYourCar aboutYourCar = yourDetails.getAboutYourCar();
+        InsuranceData.AboutYou aboutYou = insuranceData.getAboutYou();
 
-        populateDateOfBirthOfCustomer(customerDetails.getDob());
+        populateDateOfBirthOfCustomer(aboutYou.getDob());
 
-        setCustomerIsUKResidentYesOrNo(customerDetails.isUkResident());
+        setCustomerIsUKResidentYesOrNo(aboutYou.isUkResident());
 
-        selectEmploymentStatus(customerDetails.getEmploymentStatus());
+        selectEmploymentStatus(aboutYou.getEmploymentStatus());
 
-        selectOccupationWithRespetToEmploymentStatus(customerDetails);
+        selectOccupationWithRespetToEmploymentStatus(aboutYou);
 
-        setCustomerGender(customerDetails.getGender());
+        setCustomerGender(aboutYou.getGender());
 
-        setMaritalStatusOfCustomer(customerDetails.getMaritalStatus());
+        setMaritalStatusOfCustomer(aboutYou.getMaritalStatus());
 
-        setNoOfChildrenAtAddress(customerDetails.getChildrenatAddress());
+        setNoOfChildrenAtAddress(aboutYou.getChildrenatAddress());
 
-        selectResidentialStatus(customerDetails.getResidentialStatus());
+        selectResidentialStatus(aboutYou.getResidentialStatus());
 
-        selectNumberOfCarInHousehold(aboutYourCar.getCarInHousehold());
+        selectNumberOfCarInHousehold(aboutYou.getCarInHousehold());
 
-        selectUseOfOtherVehicle(aboutYourCar.getAccessOfVehicle());
+        selectUseOfOtherVehicle(aboutYou.getAccessOfVehicle());
 
-        selectLicenceType(aboutYourCar.getLicenceType());
+        selectLicenceType(aboutYou.getLicenceType());
 
-        selectLicenceHeldTime(aboutYourCar.getLicenceHeldYear(),aboutYourCar.getLicenceHeldMonth());
+        selectLicenceHeldTime(aboutYou.getLicenceHeldYear(),aboutYou.getLicenceHeldMonth());
 
-        selectNCDYear(aboutYourCar.getNcdYear());
+        selectNCDYear(aboutYou.getNcdYear());
 
-        setRegistrationNumber(aboutYourCar.getRegistrationNo());
+        setRegistrationNumber(aboutYou.getRegistrationNo());
 
-        setCarCoverStartDate(aboutYourCar.getCoverStartDate());
+        setCarCoverStartDate(aboutYou.getCoverStartDate());
 
-        selectAddressOfRegisterVehicle(customerDetails.getPostcode());
+        selectAddressOfRegisterVehicle(aboutYou.getPostcode());
 
         selectCoverDeclarations();
 
@@ -172,18 +171,19 @@ public class AboutYouPage {
         }
     }
 
-    private void selectOccupationWithRespetToEmploymentStatus(InsuranceData.YourDetails.CustomerDetails customerDetails) {
-        if (customerDetails.getEmploymentStatus() == EmploymentStatus.INEDUCATION) {
+    private void selectOccupationWithRespetToEmploymentStatus(InsuranceData.AboutYou aboutYou) {
+        if (aboutYou.getEmploymentStatus() == EmploymentStatus.INEDUCATION) {
             selectInEducationOccupation(Occupation.MATURESTUDENT);
-            selectIndustry(customerDetails.getIndustry());
-            setOtherOCcupationYesOrNo(customerDetails.isSecondOccupation());
+            selectIndustry(aboutYou.getIndustry());
+            setOtherOCcupationYesOrNo(aboutYou.isSecondOccupation());
         }
         else
-        if(customerDetails.getEmploymentStatus() == EmploymentStatus.EMPLOYED || customerDetails.getEmploymentStatus() == EmploymentStatus.SELFEMPLOYED || customerDetails.getEmploymentStatus() == EmploymentStatus.VOLUNTARY)
+        if(aboutYou.getEmploymentStatus() == EmploymentStatus.EMPLOYED || aboutYou.getEmploymentStatus() ==
+            EmploymentStatus.SELFEMPLOYED || aboutYou.getEmploymentStatus() == EmploymentStatus.VOLUNTARY)
         {
-            selectCustomerOccupation(customerDetails.getOccupation());
-            selectIndustry(customerDetails.getIndustry());
-            setOtherOCcupationYesOrNo(customerDetails.isSecondOccupation());
+            selectCustomerOccupation(aboutYou.getOccupation());
+            selectIndustry(aboutYou.getIndustry());
+            setOtherOCcupationYesOrNo(aboutYou.isSecondOccupation());
         }
     }
 

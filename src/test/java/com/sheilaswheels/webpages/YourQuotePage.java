@@ -56,7 +56,7 @@ public class YourQuotePage {
     private WebElement noExtraCover;
 
     @FindBy(how = How.CSS , using = "input#mobRecalculate")
-    private WebElement recalculate;
+    private WebElement reCalculate;
 
     @FindBy(how = How.CSS , using = "div#recalcDialog p")
     private WebElement recalculateDialog;
@@ -98,8 +98,8 @@ public class YourQuotePage {
     }
 
     private void clickOnRecalculate() {
-        Driver.waitForPageElementToLoad(recalculate);
-        recalculate.click();
+        Driver.waitForPageElementToLoad(reCalculate);
+        reCalculate.click();
     }
 
     private void boostYourCoverWithOptionalExtras(BoostCover boostCover) {
@@ -124,19 +124,13 @@ public class YourQuotePage {
                     }
     }
 
-    private void getAnnualPremiumFromQuote(InsuranceData.YourQuote yourQuote) {
-        System.out.println(annualPremium.getText());
-        yourQuote.getBoostInsuranceCover().setAnnualPremium(Double.parseDouble(annualPremium.getText()));
-        System.out.println(yourQuote.getBoostInsuranceCover().getAnnualPremium());
-    }
-
-    public void selectExtraBoostOptionsAndRecalculateQuote(InsuranceData.YourQuote yourQuote) {
+    public void selectExtraBoostOptionsAndRecalculateQuote(InsuranceData insuranceData) {
+        InsuranceData.BoostInsuranceCover boostInsuranceCover = insuranceData.getBoostInsuranceCover();
         Driver.waitForPageElementToLoad(thankYouMessage);
-        // getAnnualPremiumFromQuote(yourQuote);
-        boostYourCoverWithOptionalExtras(yourQuote.getBoostInsuranceCover().getBoostCover());
+        boostYourCoverWithOptionalExtras(boostInsuranceCover.getBoostCover());
         clickOnRecalculate();
         waitForInsuranceToBeRecalculated();
-        selectNCDProtection(yourQuote.getBoostInsuranceCover().isNcdProtection());
+        selectNCDProtection(boostInsuranceCover.isNcdProtection());
         selectYourExcessProtection();
         moveToNextPage();
     }

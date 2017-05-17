@@ -3,7 +3,7 @@ package com.sheilaswheels.domain.enumType;
 /**
  * Created by bhawana on 11/05/2017.
  */
-public enum BreakdownOptions {
+public enum BreakDown {
     ROADSIDEASSISTANCE("Roadside Assistance"),
     RSA_HOMERESCUE("Roadside Assistance and Home Rescue"),
     RSA_HR_RECOVERY("Roadside Assistance, Home Rescue and Recovery"),
@@ -11,7 +11,7 @@ public enum BreakdownOptions {
 
     private String value;
 
-    BreakdownOptions(String value) {
+    BreakDown(String value) {
         this.value = value;
     }
 

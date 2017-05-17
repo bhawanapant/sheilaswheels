@@ -58,28 +58,6 @@ public class Driver extends Thread {
     public static void waitForPageElementToLoad(WebElement checkingElement) {
         wait = new WebDriverWait(webDriver,30);
         wait.until(ExpectedConditions.visibilityOf(checkingElement));}
-//
-//    public static void waitAndClickOnTheElementUntilSucced(WebElement checkingElement){
-//        boolean flag = new FluentWait<WebElement>(checkingElement).
-//                           withTimeout(10, TimeUnit.SECONDS).
-//                           pollingEvery(100,TimeUnit.MILLISECONDS).
-//                           ignoring(StaleElementReferenceException.class).
-//                           until(new Function<WebElement, Boolean>(){
-//                             @Override
-//                             public Boolean apply(WebElement checkingElement) {
-//                                 try {
-//                                     webDriver.navigate().refresh();
-//                                     return checkingElement.isDisplayed();
-//                                 }catch(Exception e){
-//                                     try {
-//                                         LogFile.getTheErrorMessageInDetail(e.getMessage());
-//                                     } catch (JsonProcessingException e1) {
-//                                         e1.printStackTrace();
-//                                     }
-//                                     return false;
-//                                 }
-//                             }
-//                           });
 }
 
 

@@ -68,32 +68,32 @@ public class YourDetailsPage {
         PageFactory.initElements(driver,this);
     }
 
-    public void populatePage(InsuranceData.YourDetails yourDetails) {
+    public void populateYourDetails(InsuranceData insuranceData) {
         Driver.waitForPageElementToLoad(yourDetailHeading);
 
-        InsuranceData.YourDetails.CustomerDetails customerDetails = yourDetails.getCustomerDetails();
-        InsuranceData.YourDetails.MotorClaims motorClaims = yourDetails.getMotorClaims();
-        InsuranceData.YourDetails.AdditionalPartner additionalPartner = yourDetails.getAdditionalPartners();
+       InsuranceData.YourDetails yourDetails = insuranceData.getYourDetails();
+       InsuranceData.MotorClaims motorClaims = insuranceData.getMotorClaims();
+       InsuranceData.AdditionalPartner additionalPartner = insuranceData.getAdditionalPartner();
 
-        setTitle(customerDetails.getTitle().getValue());
+        setTitle(yourDetails.getTitle().getValue());
 
-        setFirstName(customerDetails.getFirstName());
+        setFirstName(yourDetails.getFirstName());
 
-        setLastName(customerDetails.getLastName());
+        setLastName(yourDetails.getLastName());
 
-        setEmail(customerDetails.getEmailAddress());
+        setEmail(yourDetails.getEmailAddress());
 
-        setConfirmEmail(customerDetails.getEmailAddress());
+        setConfirmEmail(yourDetails.getEmailAddress());
 
-        setPhoneNumber(customerDetails.getPhoneNumber());
+        setPhoneNumber(yourDetails.getPhoneNumber());
 
-        setAdditionalPhoneNumber(customerDetails.getAdditionalPhoneNumber());
+        setAdditionalPhoneNumber(yourDetails.getPhoneNumber());
 
         setMotorClaimYesOrNo(motorClaims.isMotorClaims());
 
         setMotorConvictionYesOrNo(motorClaims.isMotorConviction());
 
-        setAdditionalDriverFlag(additionalPartner.isAddPartner());
+        setAdditionalDriverFlag(additionalPartner.isAdditionalDriver());
 
         setVisitorReason();
 
