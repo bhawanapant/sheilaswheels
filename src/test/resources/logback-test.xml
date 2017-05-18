@@ -10,7 +10,7 @@
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>testData.log</file>
-        <append>true</append>
+        <append>false</append>
         <!-- set immediateFlush to false for much higher logging throughput -->
         <immediateFlush>true</immediateFlush>
         <!-- encoders are assigned the type
@@ -22,7 +22,7 @@
 
     <!--<include resource="org/springframework/boot/logging/logback/base.xml"/>-->
     <!--<logger name="org.springframework" level="DEBUG"/>-->
-    <logger name="com.sheilaswheels" level="DEBUG"/>
+    <logger name="com.esure.motorinsurance" level="DEBUG"/>
     <root level="ERROR">
         <appender-ref ref="FILE" />
     </root>

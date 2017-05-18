@@ -1,132 +1,500 @@
-49460 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
-  "title" : "MRS",
-  "firstName" : "Bhawana",
-  "lastName" : "Pant",
-  "emailAddress" : "no.one@esure.com",
-  "phoneNumber" : "08998478869",
-  "additionalPhoneNumber" : "07667898878",
-  "addPartner" : false,
-  "mainDriver" : true,
-  "firstTimeBuyer" : true
+65778 [main] DEBUG c.e.m.s.GetPolicyStepDefinitions - Final Quote Details for Motor Insurance is {
+  "yourDetails" : {
+    "title" : "MRS",
+    "firstName" : "Bhawana",
+    "lastName" : "Pant",
+    "emailAddress" : "no.one@esure.com",
+    "phoneNumber" : "08998478869",
+    "additionalPhoneNumber" : "07667898878",
+    "addPartner" : false,
+    "mainDriver" : true,
+    "firstTimeBuyer" : true
+  },
+  "aboutYou" : {
+    "dob" : {
+      "year" : 1985,
+      "month" : "APRIL",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 25,
+      "dayOfWeek" : "THURSDAY",
+      "era" : "CE",
+      "dayOfYear" : 115,
+      "leapYear" : false,
+      "monthValue" : 4
+    },
+    "ukResident" : true,
+    "employmentStatus" : "EMPLOYED",
+    "occupation" : "Computer Engineer",
+    "industry" : "Insurance",
+    "secondOccupation" : false,
+    "gender" : "FEMALE",
+    "maritalStatus" : "MARRIED",
+    "childrenatAddress" : "TWO",
+    "residentialStatus" : "HOMEOWNER",
+    "carInHousehold" : "TWO",
+    "accessOfVehicle" : "NO",
+    "licenceType" : "FULLUKLICENCE",
+    "licenceHeldYear" : "FOURYEARS",
+    "licenceHeldMonth" : "ONEMONTH",
+    "ncdYear" : "EIGHTYEARS",
+    "coverStartDate" : {
+      "year" : 2017,
+      "month" : "APRIL",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 2,
+      "dayOfWeek" : "SUNDAY",
+      "era" : "CE",
+      "dayOfYear" : 92,
+      "leapYear" : false,
+      "monthValue" : 4
+    },
+    "coverEndDate" : null,
+    "registrationNo" : "BL64 PKO",
+    "postcode" : "TW18 4EZ"
+  },
+  "yourCar" : {
+    "carMaker" : "",
+    "carModel" : "",
+    "fuelType" : "",
+    "transmissionType" : "",
+    "carRegistrationDate" : {
+      "year" : 2016,
+      "month" : "JANUARY",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 20,
+      "dayOfWeek" : "WEDNESDAY",
+      "era" : "CE",
+      "dayOfYear" : 20,
+      "leapYear" : true,
+      "monthValue" : 1
+    },
+    "estimateValue" : 7799,
+    "mileage" : "UPTO17000",
+    "carKeptOvernight" : "DRIVEAWAY",
+    "carPurchaseDate" : {
+      "year" : 2017,
+      "month" : "APRIL",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 25,
+      "dayOfWeek" : "TUESDAY",
+      "era" : "CE",
+      "dayOfYear" : 115,
+      "leapYear" : false,
+      "monthValue" : 4
+    },
+    "securityDevice" : "NONEFITTED",
+    "legalOwnerOfCar" : "PROPOSER",
+    "registerKeeperOfCar" : "PROPOSER",
+    "useOfCar" : "SOCIALDOMESTICANDPLEASURE",
+    "coverLevel" : "COMPREHENSIVE",
+    "expDrivingAnotherVehicle" : "NONE",
+    "yearOfClaimFreeOnVehicle" : "UNDERONEYEAR",
+    "trackingDeviceFitted" : false,
+    "carKeptDiffPostCode" : false,
+    "carModified" : false
+  },
+  "motorClaims" : {
+    "motorClaims" : false,
+    "motorConviction" : false
+  },
+  "additionalPartner" : {
+    "additionalDriverClaims" : false,
+    "additionalDriverConviction" : false,
+    "additionalDriver" : false
+  },
+  "boostInsuranceCover" : {
+    "monthlyCost" : 0.0,
+    "annualPremium" : 0.0,
+    "boostCover" : "MOTORLEGALPROTECTION",
+    "ncdProtection" : false,
+    "breakDown" : "RSA_HR_RECOVERY"
+  }
 }
-18141 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
-  "title" : "MRS",
-  "firstName" : "Bhawana",
-  "lastName" : "Pant",
-  "emailAddress" : "no.one@esure.com",
-  "phoneNumber" : "08998478869",
-  "additionalPhoneNumber" : "07667898878",
-  "addPartner" : false,
-  "mainDriver" : true,
-  "firstTimeBuyer" : true
+65781 [main] DEBUG c.e.m.s.GetPolicyStepDefinitions - Quote Details are correct
+107523 [main] DEBUG c.e.m.s.GetPolicyStepDefinitions - Final Quote Details for Motor Insurance is {
+  "yourDetails" : {
+    "title" : "MISS",
+    "firstName" : "Bhawana",
+    "lastName" : "Pant",
+    "emailAddress" : "no.one@esure.com",
+    "phoneNumber" : "08998478869",
+    "additionalPhoneNumber" : "07667898878",
+    "addPartner" : false,
+    "mainDriver" : true,
+    "firstTimeBuyer" : true
+  },
+  "aboutYou" : {
+    "dob" : {
+      "year" : 1985,
+      "month" : "APRIL",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 25,
+      "dayOfWeek" : "THURSDAY",
+      "era" : "CE",
+      "dayOfYear" : 115,
+      "leapYear" : false,
+      "monthValue" : 4
+    },
+    "ukResident" : true,
+    "employmentStatus" : "EMPLOYED",
+    "occupation" : "Computer Engineer",
+    "industry" : "Insurance",
+    "secondOccupation" : false,
+    "gender" : "FEMALE",
+    "maritalStatus" : "MARRIED",
+    "childrenatAddress" : "TWO",
+    "residentialStatus" : "HOMEOWNER",
+    "carInHousehold" : "TWO",
+    "accessOfVehicle" : "NO",
+    "licenceType" : "FULLUKLICENCE",
+    "licenceHeldYear" : "FOURYEARS",
+    "licenceHeldMonth" : "ONEMONTH",
+    "ncdYear" : "EIGHTYEARS",
+    "coverStartDate" : {
+      "year" : 2017,
+      "month" : "APRIL",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 2,
+      "dayOfWeek" : "SUNDAY",
+      "era" : "CE",
+      "dayOfYear" : 92,
+      "leapYear" : false,
+      "monthValue" : 4
+    },
+    "coverEndDate" : null,
+    "registrationNo" : "BL64 PKO",
+    "postcode" : "TW18 4EZ"
+  },
+  "yourCar" : {
+    "carMaker" : "",
+    "carModel" : "",
+    "fuelType" : "",
+    "transmissionType" : "",
+    "carRegistrationDate" : {
+      "year" : 2016,
+      "month" : "JANUARY",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 20,
+      "dayOfWeek" : "WEDNESDAY",
+      "era" : "CE",
+      "dayOfYear" : 20,
+      "leapYear" : true,
+      "monthValue" : 1
+    },
+    "estimateValue" : 7799,
+    "mileage" : "UPTO17000",
+    "carKeptOvernight" : "DRIVEAWAY",
+    "carPurchaseDate" : {
+      "year" : 2017,
+      "month" : "APRIL",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 25,
+      "dayOfWeek" : "TUESDAY",
+      "era" : "CE",
+      "dayOfYear" : 115,
+      "leapYear" : false,
+      "monthValue" : 4
+    },
+    "securityDevice" : "NONEFITTED",
+    "legalOwnerOfCar" : "PROPOSER",
+    "registerKeeperOfCar" : "PROPOSER",
+    "useOfCar" : "SOCIALDOMESTICANDPLEASURE",
+    "coverLevel" : "COMPREHENSIVE",
+    "expDrivingAnotherVehicle" : "NONE",
+    "yearOfClaimFreeOnVehicle" : "UNDERONEYEAR",
+    "trackingDeviceFitted" : false,
+    "carKeptDiffPostCode" : false,
+    "carModified" : false
+  },
+  "motorClaims" : {
+    "motorClaims" : false,
+    "motorConviction" : false
+  },
+  "additionalPartner" : {
+    "additionalDriverClaims" : false,
+    "additionalDriverConviction" : false,
+    "additionalDriver" : false
+  },
+  "boostInsuranceCover" : {
+    "monthlyCost" : 0.0,
+    "annualPremium" : 0.0,
+    "boostCover" : "MOTORLEGALPROTECTION",
+    "ncdProtection" : false,
+    "breakDown" : "RSA_HR_RECOVERY"
+  }
 }
-46178 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
-  "title" : "MISS",
-  "firstName" : "Bhawana",
-  "lastName" : "Pant",
-  "emailAddress" : "no.one@esure.com",
-  "phoneNumber" : "08998478869",
-  "additionalPhoneNumber" : "07667898878",
-  "addPartner" : false,
-  "mainDriver" : true,
-  "firstTimeBuyer" : true
+107523 [main] DEBUG c.e.m.s.GetPolicyStepDefinitions - Quote Details are not correct
+145911 [main] DEBUG c.e.m.s.GetPolicyStepDefinitions - Final Quote Details for Motor Insurance is {
+  "yourDetails" : {
+    "title" : "MS",
+    "firstName" : "Bhawana",
+    "lastName" : "Pant",
+    "emailAddress" : "no.one@esure.com",
+    "phoneNumber" : "08998478869",
+    "additionalPhoneNumber" : "07667898878",
+    "addPartner" : false,
+    "mainDriver" : true,
+    "firstTimeBuyer" : true
+  },
+  "aboutYou" : {
+    "dob" : {
+      "year" : 1985,
+      "month" : "APRIL",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 25,
+      "dayOfWeek" : "THURSDAY",
+      "era" : "CE",
+      "dayOfYear" : 115,
+      "leapYear" : false,
+      "monthValue" : 4
+    },
+    "ukResident" : true,
+    "employmentStatus" : "EMPLOYED",
+    "occupation" : "Computer Engineer",
+    "industry" : "Insurance",
+    "secondOccupation" : false,
+    "gender" : "FEMALE",
+    "maritalStatus" : "MARRIED",
+    "childrenatAddress" : "TWO",
+    "residentialStatus" : "HOMEOWNER",
+    "carInHousehold" : "TWO",
+    "accessOfVehicle" : "NO",
+    "licenceType" : "FULLUKLICENCE",
+    "licenceHeldYear" : "FOURYEARS",
+    "licenceHeldMonth" : "ONEMONTH",
+    "ncdYear" : "EIGHTYEARS",
+    "coverStartDate" : {
+      "year" : 2017,
+      "month" : "APRIL",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 2,
+      "dayOfWeek" : "SUNDAY",
+      "era" : "CE",
+      "dayOfYear" : 92,
+      "leapYear" : false,
+      "monthValue" : 4
+    },
+    "coverEndDate" : null,
+    "registrationNo" : "BL64 PKO",
+    "postcode" : "TW18 4EZ"
+  },
+  "yourCar" : {
+    "carMaker" : "",
+    "carModel" : "",
+    "fuelType" : "",
+    "transmissionType" : "",
+    "carRegistrationDate" : {
+      "year" : 2016,
+      "month" : "JANUARY",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 20,
+      "dayOfWeek" : "WEDNESDAY",
+      "era" : "CE",
+      "dayOfYear" : 20,
+      "leapYear" : true,
+      "monthValue" : 1
+    },
+    "estimateValue" : 7799,
+    "mileage" : "UPTO17000",
+    "carKeptOvernight" : "DRIVEAWAY",
+    "carPurchaseDate" : {
+      "year" : 2017,
+      "month" : "APRIL",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 25,
+      "dayOfWeek" : "TUESDAY",
+      "era" : "CE",
+      "dayOfYear" : 115,
+      "leapYear" : false,
+      "monthValue" : 4
+    },
+    "securityDevice" : "NONEFITTED",
+    "legalOwnerOfCar" : "PROPOSER",
+    "registerKeeperOfCar" : "PROPOSER",
+    "useOfCar" : "SOCIALDOMESTICANDPLEASURE",
+    "coverLevel" : "COMPREHENSIVE",
+    "expDrivingAnotherVehicle" : "NONE",
+    "yearOfClaimFreeOnVehicle" : "UNDERONEYEAR",
+    "trackingDeviceFitted" : false,
+    "carKeptDiffPostCode" : false,
+    "carModified" : false
+  },
+  "motorClaims" : {
+    "motorClaims" : false,
+    "motorConviction" : false
+  },
+  "additionalPartner" : {
+    "additionalDriverClaims" : false,
+    "additionalDriverConviction" : false,
+    "additionalDriver" : false
+  },
+  "boostInsuranceCover" : {
+    "monthlyCost" : 0.0,
+    "annualPremium" : 0.0,
+    "boostCover" : "MOTORLEGALPROTECTION",
+    "ncdProtection" : false,
+    "breakDown" : "RSA_HR_RECOVERY"
+  }
 }
-73441 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
-  "title" : "MS",
-  "firstName" : "Bhawana",
-  "lastName" : "Pant",
-  "emailAddress" : "no.one@esure.com",
-  "phoneNumber" : "08998478869",
-  "additionalPhoneNumber" : "07667898878",
-  "addPartner" : false,
-  "mainDriver" : true,
-  "firstTimeBuyer" : true
+145911 [main] DEBUG c.e.m.s.GetPolicyStepDefinitions - Quote Details are not correct
+188155 [main] DEBUG c.e.m.s.GetPolicyStepDefinitions - Final Quote Details for Motor Insurance is {
+  "yourDetails" : {
+    "title" : "DR",
+    "firstName" : "Bhawana",
+    "lastName" : "Pant",
+    "emailAddress" : "no.one@esure.com",
+    "phoneNumber" : "08998478869",
+    "additionalPhoneNumber" : "07667898878",
+    "addPartner" : false,
+    "mainDriver" : true,
+    "firstTimeBuyer" : true
+  },
+  "aboutYou" : {
+    "dob" : {
+      "year" : 1985,
+      "month" : "APRIL",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 25,
+      "dayOfWeek" : "THURSDAY",
+      "era" : "CE",
+      "dayOfYear" : 115,
+      "leapYear" : false,
+      "monthValue" : 4
+    },
+    "ukResident" : true,
+    "employmentStatus" : "EMPLOYED",
+    "occupation" : "Computer Engineer",
+    "industry" : "Insurance",
+    "secondOccupation" : false,
+    "gender" : "FEMALE",
+    "maritalStatus" : "MARRIED",
+    "childrenatAddress" : "TWO",
+    "residentialStatus" : "HOMEOWNER",
+    "carInHousehold" : "TWO",
+    "accessOfVehicle" : "NO",
+    "licenceType" : "FULLUKLICENCE",
+    "licenceHeldYear" : "FOURYEARS",
+    "licenceHeldMonth" : "ONEMONTH",
+    "ncdYear" : "EIGHTYEARS",
+    "coverStartDate" : {
+      "year" : 2017,
+      "month" : "APRIL",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 2,
+      "dayOfWeek" : "SUNDAY",
+      "era" : "CE",
+      "dayOfYear" : 92,
+      "leapYear" : false,
+      "monthValue" : 4
+    },
+    "coverEndDate" : null,
+    "registrationNo" : "BL64 PKO",
+    "postcode" : "TW18 4EZ"
+  },
+  "yourCar" : {
+    "carMaker" : "",
+    "carModel" : "",
+    "fuelType" : "",
+    "transmissionType" : "",
+    "carRegistrationDate" : {
+      "year" : 2016,
+      "month" : "JANUARY",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 20,
+      "dayOfWeek" : "WEDNESDAY",
+      "era" : "CE",
+      "dayOfYear" : 20,
+      "leapYear" : true,
+      "monthValue" : 1
+    },
+    "estimateValue" : 7799,
+    "mileage" : "UPTO17000",
+    "carKeptOvernight" : "DRIVEAWAY",
+    "carPurchaseDate" : {
+      "year" : 2017,
+      "month" : "APRIL",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfMonth" : 25,
+      "dayOfWeek" : "TUESDAY",
+      "era" : "CE",
+      "dayOfYear" : 115,
+      "leapYear" : false,
+      "monthValue" : 4
+    },
+    "securityDevice" : "NONEFITTED",
+    "legalOwnerOfCar" : "PROPOSER",
+    "registerKeeperOfCar" : "PROPOSER",
+    "useOfCar" : "SOCIALDOMESTICANDPLEASURE",
+    "coverLevel" : "COMPREHENSIVE",
+    "expDrivingAnotherVehicle" : "NONE",
+    "yearOfClaimFreeOnVehicle" : "UNDERONEYEAR",
+    "trackingDeviceFitted" : false,
+    "carKeptDiffPostCode" : false,
+    "carModified" : false
+  },
+  "motorClaims" : {
+    "motorClaims" : false,
+    "motorConviction" : false
+  },
+  "additionalPartner" : {
+    "additionalDriverClaims" : false,
+    "additionalDriverConviction" : false,
+    "additionalDriver" : false
+  },
+  "boostInsuranceCover" : {
+    "monthlyCost" : 0.0,
+    "annualPremium" : 0.0,
+    "boostCover" : "MOTORLEGALPROTECTION",
+    "ncdProtection" : false,
+    "breakDown" : "RSA_HR_RECOVERY"
+  }
 }
-99329 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
-  "title" : "DR",
-  "firstName" : "Bhawana",
-  "lastName" : "Pant",
-  "emailAddress" : "no.one@esure.com",
-  "phoneNumber" : "08998478869",
-  "additionalPhoneNumber" : "07667898878",
-  "addPartner" : false,
-  "mainDriver" : true,
-  "firstTimeBuyer" : true
-}
-125682 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
-  "title" : "PROFESSOR",
-  "firstName" : "Bhawana",
-  "lastName" : "Pant",
-  "emailAddress" : "no.one@esure.com",
-  "phoneNumber" : "08998478869",
-  "additionalPhoneNumber" : "07667898878",
-  "addPartner" : false,
-  "mainDriver" : true,
-  "firstTimeBuyer" : true
-}
-151206 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
-  "title" : "LADY",
-  "firstName" : "Bhawana",
-  "lastName" : "Pant",
-  "emailAddress" : "no.one@esure.com",
-  "phoneNumber" : "08998478869",
-  "additionalPhoneNumber" : "07667898878",
-  "addPartner" : false,
-  "mainDriver" : true,
-  "firstTimeBuyer" : true
-}
-20523 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
-  "title" : "MRS",
-  "firstName" : "Bhawana",
-  "lastName" : "Pant",
-  "emailAddress" : "no.one@esure.com",
-  "phoneNumber" : "08998478869",
-  "additionalPhoneNumber" : "07667898878",
-  "addPartner" : false,
-  "mainDriver" : true,
-  "firstTimeBuyer" : true
-}
-176981 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
-  "title" : "MISS",
-  "firstName" : "Bhawana",
-  "lastName" : "Pant",
-  "emailAddress" : "no.one@esure.com",
-  "phoneNumber" : "08998478869",
-  "additionalPhoneNumber" : "07667898878",
-  "addPartner" : false,
-  "mainDriver" : true,
-  "firstTimeBuyer" : true
-}
-230362 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
-  "title" : "MS",
-  "firstName" : "Bhawana",
-  "lastName" : "Pant",
-  "emailAddress" : "no.one@esure.com",
-  "phoneNumber" : "08998478869",
-  "additionalPhoneNumber" : "07667898878",
-  "addPartner" : false,
-  "mainDriver" : true,
-  "firstTimeBuyer" : true
-}
-280283 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
-  "title" : "DR",
-  "firstName" : "Bhawana",
-  "lastName" : "Pant",
-  "emailAddress" : "no.one@esure.com",
-  "phoneNumber" : "08998478869",
-  "additionalPhoneNumber" : "07667898878",
-  "addPartner" : false,
-  "mainDriver" : true,
-  "firstTimeBuyer" : true
-}
-323942 [main] DEBUG c.s.s.GetPolicyStepDefinitions -  The data for yourDetails is {
-  "title" : "PROFESSOR",
-  "firstName" : "Bhawana",
-  "lastName" : "Pant",
-  "emailAddress" : "no.one@esure.com",
-  "phoneNumber" : "08998478869",
-  "additionalPhoneNumber" : "07667898878",
-  "addPartner" : false,
-  "mainDriver" : true,
-  "firstTimeBuyer" : true
-}
+188155 [main] DEBUG c.e.m.s.GetPolicyStepDefinitions - Quote Details are not correct
