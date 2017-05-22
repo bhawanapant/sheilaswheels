@@ -1,7 +1,11 @@
 package com.esure.motorinsurance.webpages;
 
 import com.esure.motorinsurance.domain.InsuranceData;
+import com.esure.motorinsurance.domain.enumType.EmploymentStatus;
+import com.esure.motorinsurance.domain.enumType.MaritalStatus;
+import com.esure.motorinsurance.domain.enumType.ResidentialStatus;
 import com.esure.motorinsurance.domain.enumType.Title;
+import com.esure.motorinsurance.utility.Driver;
 import com.esure.motorinsurance.utility.LogFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.openqa.selenium.WebDriver;
@@ -18,12 +22,20 @@ import java.util.concurrent.TimeUnit;
 public class QuoteDetailPage {
     WebDriver driver;
     private InsuranceData.YourDetails yourDetails;
+    private InsuranceData.AboutYou aboutYou;
+
 
     @FindBy(how = How.XPATH , using = "//div[@class='content-area-centre']")
     private WebElement contentArea;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[1]//h2")
     private WebElement yourDetailHeading;
+
+    @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[1]/span")
+    private WebElement yourDetailSpan;
+
+    @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]/span")
+    private WebElement aboutYouSpan;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//h2")
     private WebElement aboutYouHeading;
@@ -32,127 +44,127 @@ public class QuoteDetailPage {
     private WebElement yourCarHeading;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[1]//span[@class='new__left']/li[1]/span")
-    private WebElement titleC;
+    private WebElement titleQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[1]//span[@class='new__left']/li[2]/span")
-    private WebElement firstname;
+    private WebElement firstnameQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[1]//span[@class='new__left']/li[3]/span")
-    private WebElement surName;
+    private WebElement surNameQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[1]//span[@class='new__right']/li[1]/span")
-    private WebElement email;
+    private WebElement emailQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[1]//span[@class='new__right']/li[2]/span")
-    private WebElement phoneNumber;
+    private WebElement phoneNumberQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[1]//span[@class='new__right']/li[3]/span")
-    private WebElement mainDriver;
+    private WebElement mainDriverQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__left']/li[1]/span")
-    private WebElement dob;
+    private WebElement dobQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__left']/li[2]/span")
-    private WebElement ukResident;
+    private WebElement ukResidentQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__left']/li[3]/span")
-    private WebElement empStatus;
+    private WebElement empStatusQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__left']/li[4]/span")
-    private WebElement occupation;
+    private WebElement occupationQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__left']/li[5]/span")
-    private WebElement industry;
+    private WebElement industryQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__left']/li[6]/span")
-    private WebElement gender;
+    private WebElement genderQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__left']/li[7]/span")
-    private WebElement maritalStatus;
+    private WebElement maritalStatusQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__left']/li[8]/span")
-    private WebElement noOfChild;
+    private WebElement noOfChildQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__left']/li[9]/span")
-    private WebElement resStatus;
+    private WebElement resStatusQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__right']/li[1]/span")
-    private WebElement noOfCars;
+    private WebElement noOfCarsQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__right']/li[2]/span")
-    private WebElement accessToAnyVehicle;
+    private WebElement accessToAnyVehicleQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__right']/li[3]/span")
-    private WebElement licenseType;
+    private WebElement licenseTypeQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__right']/li[4]/span")
-    private WebElement licenseHeldYear;
+    private WebElement licenseHeldYearQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__right']/li[5]/span")
-    private WebElement ncdYear;
+    private WebElement ncdYearQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__right']/li[6]/span")
-    private WebElement coverStartDate;
+    private WebElement coverStartDateQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__right']/li[7]/span")
-    private WebElement coverEndDate;
+    private WebElement coverEndDateQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__right']/li[8]/span")
-    private WebElement registrationNum;
+    private WebElement registrationNumQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__right']/li[9]/span")
-    private WebElement houseNo;
+    private WebElement houseNoQ;
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//span[@class='new__right']/li[10]/span")
-    private WebElement postcode;
+    private WebElement postcodeQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__left']//li[1]/span")
-    private WebElement carMaker;
+    private WebElement carMakerQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__left']//li[2]/span")
-    private WebElement carModel;
+    private WebElement carModelQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__left']//li[3]/span")
-    private WebElement fuelType;
+    private WebElement fuelTypeQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__left']//li[4]/span")
-    private WebElement transmissionType;
+    private WebElement transmissionTypeQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__left']//li[5]/span")
-    private WebElement carResYear;
+    private WebElement carResYearQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__left']//li[6]/span")
-    private WebElement carEstimation;
+    private WebElement carEstimationQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__left']//li[7]/span")
-    private WebElement milage;
+    private WebElement milageQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__left']//li[8]/span")
-    private WebElement carKeptOvernight;
+    private WebElement carKeptOvernightQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__right']//li[1]/span")
-    private WebElement carDateOfPurchase;
+    private WebElement carDateOfPurchaseQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__right']//li[2]/span")
-    private WebElement securityDeviceFitted;
+    private WebElement securityDeviceFittedQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__right']//li[3]/span")
-    private WebElement legalOwner;
+    private WebElement legalOwnerQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__right']//li[4]/span")
-    private WebElement registerKeeper;
+    private WebElement registerKeeperQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__right']//li[5]/span")
-    private WebElement carTrackingDevice;
+    private WebElement carTrackingDeviceQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__right']//li[6]/span")
-    private WebElement useOfCar;
+    private WebElement useOfCarQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__right']//li[7]/span")
-    private WebElement coverLevel;
+    private WebElement coverLevelQ;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span[@class='new__right']//li[8]/span")
-    private WebElement modification;
+    private WebElement modificationQ;
 
     public QuoteDetailPage(WebDriver driver) {
         this.driver = driver;
@@ -163,8 +175,14 @@ public class QuoteDetailPage {
     public void verifyThatQuoteHasBeenCreatedWithCorrectValues(InsuranceData insuranceData)
         throws InterruptedException {
 
-        clickOnYourDetailExpandButton();
+        clickOnExpandButton(yourDetailHeading);
+        Driver.waitForElementToLoad(yourDetailSpan);
         getYourDetailDataFromQuoteDetail();
+
+        clickOnExpandButton(aboutYouHeading);
+        Driver.waitForElementToLoad(aboutYouSpan);
+        getAboutYouDetailFromQuoteDetail();
+
         InsuranceData insuranceDataFromQuote = createInsuranceDataFromQuoteDetailPage();
 
         if(insuranceData.equals(insuranceDataFromQuote)) {
@@ -184,30 +202,39 @@ public class QuoteDetailPage {
         }
     }
 
+    private void getYourDetailDataFromQuoteDetail() {
+        Title value = Title.get(titleQ.getText());
+        yourDetails = InsuranceData.YourDetails.builder()
+            .title(value)
+            .firstName(firstnameQ.getText())
+            .lastName(surNameQ.getText())
+            .emailAddress(emailQ.getText()).build();
+    }
+
+    private void getAboutYouDetailFromQuoteDetail() {
+        EmploymentStatus empS = EmploymentStatus.get(empStatusQ.getText());
+        MaritalStatus maritalS = MaritalStatus.get(maritalStatusQ.getText());
+        ResidentialStatus resS = ResidentialStatus.get(resStatusQ.getText());
+        aboutYou = InsuranceData.AboutYou.builder()
+                   .employmentStatus(empS)
+                   .maritalStatus(maritalS)
+                   .residentialStatus(resS).build();
+    }
+
     private InsuranceData createInsuranceDataFromQuoteDetailPage() {
         return InsuranceData.builder()
                .yourDetails(yourDetails)
                .yourCar(InsuranceData.YourCar.builder().build())
-               .aboutYou(InsuranceData.AboutYou.builder().build())
+               .aboutYou(aboutYou)
                .motorClaims(InsuranceData.MotorClaims.builder().build())
                .additionalPartner(InsuranceData.AdditionalPartner.builder().build())
                .boostInsuranceCover(InsuranceData.BoostInsuranceCover.builder().build())
                .build();
     }
 
-    private void getYourDetailDataFromQuoteDetail() {
-        Title value = Title.get(titleC.getText());
-        yourDetails = InsuranceData.YourDetails.builder()
-                .title(value)
-                .firstName(firstname.getText())
-                .lastName(surName.getText())
-                .emailAddress(email.getText()).build();
-    }
-
-    private void clickOnYourDetailExpandButton() {
-//        new WebDriverWait(driver,30).until(ExpectedConditions.elementToBeClickable(yourDetailHeading));
+    private void clickOnExpandButton(WebElement clickingElement) {
         forcedSleepAsTheToggleTakeTimeToExpand();
-        yourDetailHeading.click();
+        clickingElement.click();
     }
 
     // TODO this is workaround need a proper fix

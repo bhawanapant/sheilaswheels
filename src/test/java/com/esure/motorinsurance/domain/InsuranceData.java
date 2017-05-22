@@ -74,7 +74,6 @@ public class InsuranceData {
         private AccessToAnyVehicle accessOfVehicle;
         private LicenceType licenceType;
         private LicenceHeldYear licenceHeldYear;
-        private LicenceHeldMonth licenceHeldMonth;
         private NCDYear ncdYear;
         private LocalDate coverStartDate;
         private LocalDate coverEndDate;
@@ -95,8 +94,7 @@ public class InsuranceData {
                 private CarInHousehold carInHousehold = CarInHousehold.TWO;
                 private AccessToAnyVehicle accessOfVehicle = AccessToAnyVehicle.NO;
                 private LicenceType licenceType = LicenceType.FULLUKLICENCE;
-                private LicenceHeldYear licenceHeldYear = LicenceHeldYear.FOURYEARS;
-                private LicenceHeldMonth licenceHeldMonth = LicenceHeldMonth.ONEMONTH;
+                private LicenceHeldYear licenceHeldYear = LicenceHeldYear.FIVEYEARS;
                 private NCDYear ncdYear = NCDYear.EIGHTYEARS;
                 private LocalDate coverStartDate = LocalDate.of(2017, 04, 02);
                 private LocalDate coverEndDate;

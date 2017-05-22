@@ -12,9 +12,8 @@ public class ConfigVariables {
     @Value("${tester}")
     private String tester;
 
-    @Value("${component}")
-    private String component;
-
+    @Value("${browser}")
+    private String browser;
 
     public String getUrl() {
         return url;
@@ -24,7 +23,7 @@ public class ConfigVariables {
         return tester;
     }
 
-    public String getComponent() {
-        return component;
+    public String getBrowser() {
+        return browser;
     }
 }

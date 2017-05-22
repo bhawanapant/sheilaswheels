@@ -19,8 +19,9 @@ public class LogFile {
     public static void getDetailsOfObjectUsedInLogFile(InsuranceData insuranceData, String message) throws JsonProcessingException {
             mapper = new ObjectMapper();
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
-            LOGGER.debug("Final Quote Details for Motor Insurance" +
-                " is " + mapper.writeValueAsString(insuranceData));
-            LOGGER.debug(message);
+            LOGGER.info("Final Quote Details for Motor Insurance" +
+                " is "  + mapper.writeValueAsString(insuranceData));
+            LOGGER.info(message);
+
         }
 }

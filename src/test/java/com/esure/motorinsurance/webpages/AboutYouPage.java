@@ -148,7 +148,7 @@ public class AboutYouPage {
 
         selectLicenceType(aboutYou.getLicenceType());
 
-        selectLicenceHeldTime(aboutYou.getLicenceHeldYear(),aboutYou.getLicenceHeldMonth());
+        selectLicenceHeldTime(aboutYou.getLicenceHeldYear());
 
         selectNCDYear(aboutYou.getNcdYear());
 
@@ -191,10 +191,37 @@ public class AboutYouPage {
     private void selectNCDYear(NCDYear ncdYearValue) {
         new Select((ncd)).selectByVisibleText(ncdYearValue.getValue());}
 
-    private void selectLicenceHeldTime(LicenceHeldYear licenceHeldYearValue, LicenceHeldMonth licenceHeldMonthValue) {
-        new Select(licenceHeldYear).selectByVisibleText(licenceHeldYearValue.getValue());
-        Driver.waitForElementToLoad(licenceHeldMonth);
-        new Select(licenceHeldMonth).selectByVisibleText(licenceHeldMonthValue.getValue());
+    private void selectLicenceHeldTime(LicenceHeldYear licenceHeldYearValue) {
+        int year = getNumberOfYears(licenceHeldYearValue);
+        if (lessThanFiveYears(year)) {
+            new Select(licenceHeldYear).selectByVisibleText(licenceHeldYearValue.getValue());
+            Driver.waitForElementToLoad(licenceHeldMonth);
+            new Select(licenceHeldMonth).selectByIndex(3);
+        }
+        else {
+            new Select(licenceHeldYear).selectByVisibleText(licenceHeldYearValue.getValue());
+        }
+    }
+
+    private int getNumberOfYears(LicenceHeldYear licenceHeldYearValue) {
+        String years = licenceHeldYearValue.getValue();
+        String[] value = years.split(" ");
+        if (licenceHeldYearValue.getValue().equals("Less than 1 year"))
+        {
+            return Integer.valueOf(value[2]);
+        } else
+            if (licenceHeldYearValue.getValue().equals("Over 15 Years"))
+            {
+            return Integer.valueOf(value[1]);
+            }
+            else
+                {
+                return Integer.valueOf(value[0]);
+                }
+    }
+
+    private boolean lessThanFiveYears(int value) {
+        return value< 5 ? true : false;
     }
 
     private void selectLicenceType(LicenceType licenceTypeValue) {
@@ -256,6 +283,7 @@ public class AboutYouPage {
         additionalCoverDeclarationYes.click();
     }
 
+    //TODO need to find a better workaround
     private void selectAddressOfRegisterVehicle(String postCodeValue) {
         enterCustomerPostCode(postCodeValue);
         try {

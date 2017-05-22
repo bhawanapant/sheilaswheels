@@ -28,7 +28,7 @@ import java.io.IOException;
  */
 public class GetPolicyStepDefinitions implements En {
 
-    private WebDriver browser;
+    private WebDriver webDriver;
     private InsuranceData insuranceData;
 
 
@@ -39,6 +39,7 @@ public class GetPolicyStepDefinitions implements En {
     private YourQuotePage yourQuotePage;
     private BreakdownOptionPage breakdownOptionPage;
     private QuoteDetailPage quoteDetailPage;
+    private String browser;
 
 
     @Autowired
@@ -46,8 +47,14 @@ public class GetPolicyStepDefinitions implements En {
 
     @Before
     public void setUp() {
+        browser = configVariables.getBrowser();
         try {
-            browser = Driver.getBrowser();
+            if(browser == null){
+                browser = System.getProperty("browser");
+            }
+            else {
+                webDriver = Driver.getBrowser(browser);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,7 +63,7 @@ public class GetPolicyStepDefinitions implements En {
 
     @Given("^user chooses to get car insurance quote$")
     public void userChoosesToGetCarInsuranceQuote() throws Throwable {
-        homepage = new Homepage(browser);
+        homepage = new Homepage(webDriver);
         homepage.clickOnMotorQuote();
     }
 
@@ -84,22 +91,22 @@ public class GetPolicyStepDefinitions implements En {
             .boostInsuranceCover(InsuranceData.BoostInsuranceCover.builder().build())
             .build();
 
-        yourDetailsPage = new YourDetailsPage(browser);
+        yourDetailsPage = new YourDetailsPage(webDriver);
         yourDetailsPage.populateYourDetails(insuranceData);
 
-        aboutYouPage = new AboutYouPage(browser);
+        aboutYouPage = new AboutYouPage(webDriver);
         aboutYouPage.populateAboutYouDetails(insuranceData);
 
-        yourCarPage = new YourCarPage(browser);
+        yourCarPage = new YourCarPage(webDriver);
         yourCarPage.populateYourCarDetails(insuranceData);
 
-        yourQuotePage = new YourQuotePage(browser);
+        yourQuotePage = new YourQuotePage(webDriver);
         yourQuotePage.selectExtraBoostOptionsAndRecalculateQuote(insuranceData);
 
-        breakdownOptionPage = new BreakdownOptionPage(browser);
+        breakdownOptionPage = new BreakdownOptionPage(webDriver);
         breakdownOptionPage.selectBreakdownOptionsAndRecalculateQuote(insuranceData);
 
-        quoteDetailPage = new QuoteDetailPage(browser);
+        quoteDetailPage = new QuoteDetailPage(webDriver);
         quoteDetailPage.verifyThatQuoteHasBeenCreatedWithCorrectValues(insuranceData);
 
     }
@@ -107,7 +114,7 @@ public class GetPolicyStepDefinitions implements En {
     @After
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
-            TakesScreenshot camera = (TakesScreenshot) browser;
+            TakesScreenshot camera = (TakesScreenshot) webDriver;
             byte[] screenShot = camera.getScreenshotAs(OutputType.BYTES);
             scenario.embed(screenShot, "image/png");
         } else {

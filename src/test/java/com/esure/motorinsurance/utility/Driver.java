@@ -21,15 +21,10 @@ public class Driver extends Thread {
     private static WebDriver webDriver = null;
     private static WebDriverWait wait;
 
-
-
-    public enum BrowserName {FIREFOX, GOOGLECHROME}
-    private static BrowserName browser = BrowserName.FIREFOX;
-
-    public static WebDriver getBrowser() throws IOException {
+    public static WebDriver getBrowser(String browser) throws IOException {
         if (webDriver == null) {
             switch (browser){
-                case FIREFOX:
+                case "firefox":
                     String geckoDriverLocation = Driver.class.getResource("/tools/geckodriver").getPath();
                     System.setProperty("webdriver.gecko.driver", geckoDriverLocation);
                     ProfilesIni profile = new ProfilesIni();
@@ -37,7 +32,7 @@ public class Driver extends Thread {
                     webDriver = new FirefoxDriver(firebugProfile);
                     break;
 
-                case GOOGLECHROME:
+                case "chrome":
                     String chromeDriverLocation = Driver.class.getResource("/tools/chromedriver").getPath();
                     System.setProperty("webdriver.chrome.driver", chromeDriverLocation);
                     webDriver = new ChromeDriver();
