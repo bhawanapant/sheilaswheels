@@ -1,31 +1,40 @@
 package com.esure.motorinsurance.webpages;
 
 import com.esure.motorinsurance.domain.InsuranceData;
-import com.esure.motorinsurance.utility.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 /**
- * Created by bhawana on 23/04/2017.
+ * Created by bhawana on 24/05/2017.
  */
-public class YourDetailsPage {
+public class YourDetailsEsurePage {
     private final WebDriver aDriver;
 
     @FindBy(how = How.XPATH , using = "//h1[contains(text(),'Your details')]")
     private WebElement yourDetailHeading;
 
-    @FindBy(how = How.CSS , using = "select[id='title']")
-    private WebElement customerTitle;
+    @FindBy(how = How.XPATH , using = "//div[@class='wrapper_row']//label[1]")
+    private WebElement titleMr;
+
+    @FindBy(how = How.XPATH , using = "//div[@class='wrapper_row']//label[2]")
+    private WebElement titleMrs;
+
+    @FindBy(how = How.XPATH , using = "//div[@class='wrapper_row']//label[3]")
+    private WebElement titleMiss;
+
+    @FindBy(how = How.XPATH , using = "//div[@class='wrapper_row']//label[4]")
+    private WebElement titleMs;
+
+    @FindBy(how = How.XPATH , using = "//div[@class='wrapper_row']//label[5]")
+    private WebElement titleDr;
 
     @FindBy(how = How.ID , using = "firstName")
     private WebElement firstName;
 
     @FindBy(how = How.ID , using = "lastName")
-    private WebElement lastName;
+    private WebElement surName;
 
     @FindBy(how = How.ID , using = "email")
     private WebElement email;
@@ -35,9 +44,6 @@ public class YourDetailsPage {
 
     @FindBy(how = How.ID , using = "phoneNight")
     private WebElement phoneNumber;
-
-    @FindBy(how = How.ID , using = "phoneDay")
-    private WebElement additionalPhoneNumber;
 
     @FindBy(how = How.ID , using = "claimsFlag_0")
     private WebElement moterClaimYes;
@@ -57,76 +63,74 @@ public class YourDetailsPage {
     @FindBy(how = How.ID , using = "noOfAdditionalDrivers_1")
     private WebElement additionalDriverNo;
 
-    @FindBy(how = How.CSS , using = "select[id='sourceCode']")
-    private WebElement sourceOfYourVisit;
-
     @FindBy(how = How.XPATH , using = "//input[@id='next']")
     private WebElement nextPage;
 
-    public YourDetailsPage(WebDriver driver) {
-        this.aDriver = driver;
-        PageFactory.initElements(driver,this);
+    public YourDetailsEsurePage(WebDriver aDriver) {
+        this.aDriver = aDriver;
     }
 
-    public void populateYourDetails(InsuranceData insuranceData) {
-        Driver.waitForElementToLoad(yourDetailHeading);
+    public void populateYourDetailsFromEsurePage(InsuranceData insuranceData) {
+       // Driver.waitForElementToLoad(yourDetailHeading);
 
-       InsuranceData.YourDetails yourDetails = insuranceData.getYourDetails();
-       InsuranceData.MotorClaims motorClaims = insuranceData.getMotorClaims();
-       InsuranceData.AdditionalPartner additionalPartner = insuranceData.getAdditionalPartner();
+        InsuranceData.YourDetails yourDetails = insuranceData.getYourDetails();
+        InsuranceData.MotorClaims motorClaims = insuranceData.getMotorClaims();
+        InsuranceData.AdditionalPartner additionalPartner = insuranceData.getAdditionalPartner();
 
         setTitle(yourDetails.getTitle().getValue());
-
         setFirstName(yourDetails.getFirstName());
 
-        setLastName(yourDetails.getLastName());
+        setSurName(yourDetails.getLastName());
 
         setEmail(yourDetails.getEmailAddress());
 
-        setConfirmEmail(yourDetails.getEmailAddress());
-
         setPhoneNumber(yourDetails.getPhoneNumber());
-
-        setAdditionalPhoneNumber(yourDetails.getPhoneNumber());
-
         setMotorClaimYesOrNo(motorClaims.isMotorClaims());
 
         setMotorConvictionYesOrNo(motorClaims.isMotorConviction());
 
         setAdditionalDriverFlag(additionalPartner.isAdditionalDriver());
 
-        setVisitorReason();
-
         moveToNextPage();
     }
 
-    public void setTitle(String title) {
-        new Select(this.customerTitle).selectByVisibleText(title);
+    private void setTitle(String value) {
+        if (value.equals("Mr")){
+            titleMr.click();
+        }
+        else
+            if (value.equals("Mrs")){
+            titleMrs.click();
+            }
+            else
+                if (value.equals("Miss")){
+                titleMiss.click();
+                }
+                else
+                    if (value.equals("Ms")){
+                    titleMs.click();
+                    }
+                    else
+                        if (value.equals("Dr")){
+                        titleDr.click();
+                        }
     }
-
     public void setFirstName(String firstName) {
         this.firstName.sendKeys(firstName);
     }
 
-    public void setLastName(String lasttName) {
-        this.lastName.sendKeys(lasttName);
+    public void setSurName(String lasttName) {
+        this.surName.sendKeys(lasttName);
     }
 
     public void setEmail(String email) {
         this.email.sendKeys(email);
     }
 
-    public void setConfirmEmail(String confirmEmail) {
-        this.confirmEmail.sendKeys(confirmEmail);
-    }
-
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber.sendKeys(phoneNumber);
     }
 
-    public void setAdditionalPhoneNumber(String additionalPhoneNumber) {
-        this.additionalPhoneNumber.sendKeys(additionalPhoneNumber);
-    }
 
     public void setMotorClaimYesOrNo(boolean motorClaimFlag) {
         (motorClaimFlag ? moterClaimYes : moterClaimNo).click();
@@ -139,12 +143,8 @@ public class YourDetailsPage {
     public void setAdditionalDriverFlag(boolean addtionalDriverFlag) {
         (addtionalDriverFlag ? additionalDriverYes : additionalDriverNo).click();
     }
-
-    public void setVisitorReason() {
-        new Select(sourceOfYourVisit).selectByIndex(3);
-    }
-
     public void moveToNextPage() {
         nextPage.click();
     }
+
 }

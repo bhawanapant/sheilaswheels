@@ -8,6 +8,7 @@ import com.esure.motorinsurance.domain.enumType.ResidentialStatus;
 import com.esure.motorinsurance.domain.enumType.Title;
 import com.esure.motorinsurance.utility.Driver;
 import com.esure.motorinsurance.webpages.*;
+import com.esure.motorinsurance.webpages.YourDetailsEsurePage;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -33,7 +34,8 @@ public class GetPolicyStepDefinitions implements En {
 
 
     private Homepage homepage;
-    private YourDetailsPage yourDetailsPage;
+    private YourDetailsSheilasWheelsPage yourDetailsSheilasWheelsPage;
+    private YourDetailsEsurePage yourDetailsEsurePage;
     private AboutYouPage aboutYouPage;
     private YourCarPage yourCarPage;
     private YourQuotePage yourQuotePage;
@@ -44,9 +46,11 @@ public class GetPolicyStepDefinitions implements En {
 
     @Autowired
     private ConfigVariables configVariables;
+    private String url;
 
     @Before
     public void setUp() {
+        url = configVariables.getUrl();
         browser = configVariables.getBrowser();
         try {
             if(browser == null){
@@ -58,20 +62,13 @@ public class GetPolicyStepDefinitions implements En {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Driver.open(configVariables.getUrl());
+        Driver.open(url);
     }
 
     @Given("^user chooses to get car insurance quote$")
     public void userChoosesToGetCarInsuranceQuote() throws Throwable {
         homepage = new Homepage(webDriver);
-        homepage.clickOnMotorQuote();
-    }
-
-
-    @Then("^she should get the motor policy$")
-    public void sheShouldGetTheMotorPolicy() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        System.out.println("Yet to Implement");
+        homepage.clickOnMotorQuote(configVariables.getUrl());
     }
 
     @When("^user enter all the necessary details with different title \"([^\"]*)\" And \"([^\"]*)\" ,\"([^\"]*)\",\"([^\"]*)\"$")
@@ -91,8 +88,15 @@ public class GetPolicyStepDefinitions implements En {
             .boostInsuranceCover(InsuranceData.BoostInsuranceCover.builder().build())
             .build();
 
-        yourDetailsPage = new YourDetailsPage(webDriver);
-        yourDetailsPage.populateYourDetails(insuranceData);
+        if (url.contains("sheilaswheels")) {
+            yourDetailsSheilasWheelsPage = new YourDetailsSheilasWheelsPage(webDriver);
+            yourDetailsSheilasWheelsPage.populateYourDetails(insuranceData);
+        }
+        else
+            if (url.contains("esure")){
+            yourDetailsEsurePage = new YourDetailsEsurePage(webDriver);
+            yourDetailsEsurePage.populateYourDetailsFromEsurePage(insuranceData);
+        }
 
         aboutYouPage = new AboutYouPage(webDriver);
         aboutYouPage.populateAboutYouDetails(insuranceData);
@@ -109,6 +113,13 @@ public class GetPolicyStepDefinitions implements En {
         quoteDetailPage = new QuoteDetailPage(webDriver);
         quoteDetailPage.verifyThatQuoteHasBeenCreatedWithCorrectValues(insuranceData);
 
+    }
+
+
+    @Then("^she should get the motor policy$")
+    public void sheShouldGetTheMotorPolicy() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        System.out.println("Yet to Implement");
     }
 
     @After

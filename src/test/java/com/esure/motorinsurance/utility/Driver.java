@@ -16,7 +16,7 @@ import static java.lang.Runtime.getRuntime;
 /**
  * Created by bhawana on 08/01/2017.
  */
-public class Driver extends Thread {
+public class Driver {
 
     private static WebDriver webDriver = null;
     private static WebDriverWait wait;
@@ -38,7 +38,7 @@ public class Driver extends Thread {
                     webDriver = new ChromeDriver();
                     break;
             }
-            quitBrowserOnceTestIsComplete();
+           // quitBrowserOnceTestIsComplete();
         }
         return webDriver;
     }

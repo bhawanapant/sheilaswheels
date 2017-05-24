@@ -193,7 +193,7 @@ public class AboutYouPage {
 
     private void selectLicenceHeldTime(LicenceHeldYear licenceHeldYearValue) {
         int year = getNumberOfYears(licenceHeldYearValue);
-        if (lessThanFiveYears(year)) {
+        if (year < 5) {
             new Select(licenceHeldYear).selectByVisibleText(licenceHeldYearValue.getValue());
             Driver.waitForElementToLoad(licenceHeldMonth);
             new Select(licenceHeldMonth).selectByIndex(3);
@@ -218,10 +218,6 @@ public class AboutYouPage {
                 {
                 return Integer.valueOf(value[0]);
                 }
-    }
-
-    private boolean lessThanFiveYears(int value) {
-        return value< 5 ? true : false;
     }
 
     private void selectLicenceType(LicenceType licenceTypeValue) {

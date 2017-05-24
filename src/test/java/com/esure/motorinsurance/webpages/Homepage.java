@@ -13,16 +13,26 @@ import org.openqa.selenium.support.PageFactory;
 public class Homepage {
     WebDriver aDriver;
 
-    @FindBy(how = How.CSS , using = "a[href='https://www.sheilaswheels.com/new/motor']")
-    private WebElement motorLink;
+    @FindBy(how = How.CSS , using = "a[href='https://www.esure.com/new/motor']" )
+    private WebElement esureMotorLink;
+
+    @FindBy(how = How.CSS , using = "a[href='https://www.sheilaswheels.com/new/motor']" )
+    private WebElement sheilasMotorLink;
 
     public Homepage(WebDriver driver) {
         this.aDriver = driver;
         PageFactory.initElements(driver,this);
     }
 
-    public void clickOnMotorQuote() {
-        Driver.waitForElementToLoad(motorLink);
-        motorLink.click();
+    public void clickOnMotorQuote(String url) {
+        if (url.contains("esure")){
+            Driver.waitForElementToLoad(esureMotorLink);
+            esureMotorLink.click();
+        } else
+            if (url.contains("sheilaswheels")) {
+                Driver.waitForElementToLoad(sheilasMotorLink);
+                sheilasMotorLink.click();
+            }
     }
+
 }

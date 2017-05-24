@@ -23,6 +23,8 @@ public class QuoteDetailPage {
     WebDriver driver;
     private InsuranceData.YourDetails yourDetails;
     private InsuranceData.AboutYou aboutYou;
+    private InsuranceData.YourCar youCar;
+
 
 
     @FindBy(how = How.XPATH , using = "//div[@class='content-area-centre']")
@@ -39,6 +41,9 @@ public class QuoteDetailPage {
 
     @FindBy(how = How.XPATH , using = "//div[@id='details-section']/ul[2]//h2")
     private WebElement aboutYouHeading;
+
+    @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//span")
+    private WebElement yourCarSpan;
 
     @FindBy(how = How.XPATH , using = "//ul[@id='car-details']//h2")
     private WebElement yourCarHeading;
@@ -183,6 +188,10 @@ public class QuoteDetailPage {
         Driver.waitForElementToLoad(aboutYouSpan);
         getAboutYouDetailFromQuoteDetail();
 
+        clickOnExpandButton(yourCarHeading);
+        Driver.waitForElementToLoad(yourCarSpan);
+        getYourCarDetailsFromQuoteDetail();
+
         InsuranceData insuranceDataFromQuote = createInsuranceDataFromQuoteDetailPage();
 
         if(insuranceData.equals(insuranceDataFromQuote)) {
@@ -200,6 +209,12 @@ public class QuoteDetailPage {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void getYourCarDetailsFromQuoteDetail() {
+        youCar = InsuranceData.YourCar.builder()
+             .carMaker(carMakerQ.getText())
+             .carModel(carModelQ.getText()).build();
     }
 
     private void getYourDetailDataFromQuoteDetail() {

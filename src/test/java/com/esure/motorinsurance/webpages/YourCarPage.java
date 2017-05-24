@@ -23,6 +23,9 @@ public class YourCarPage {
     @FindBy(how = How.XPATH , using = "//h1[contains(text(),'Your car')]")
     private WebElement yourCarHeading;
 
+    @FindBy(how = How.CSS , using = "ul#your-car li")
+    private WebElement yourCarModel;
+
     @FindBy(how = How.CSS , using = "select#legalOwner")
     private WebElement legalOwner;
 
@@ -95,23 +98,51 @@ public class YourCarPage {
         InsuranceData.YourCar yourCar = insuranceData.getYourCar();
         Driver.waitForElementToLoad(yourCarHeading);
 
+//        String carDetail[] = getYourCarModelDetails();
+//
+//        setYourCarDetailValues(yourCar, carDetail);
+
         populateLegalOwnerOfCar(yourCar.getLegalOwnerOfCar());
 
         populateRegisteredKeeperOfCar(yourCar.getRegisterKeeperOfCar());
+
         populateUsageOfCar(yourCar.getUseOfCar());
+
         populateSecurityDeviceInformation(yourCar.getSecurityDevice());
+
         populateEstimatedValueOfCar(yourCar.getEstimateValue());
+
         setTrackingDeviceYesOrNo(yourCar.isTrackingDeviceFitted());
+
         populateTheAnnualMileage(yourCar.getMileage());
+
         setCarKeptDiffPostcodeOvernightYesOrNo(yourCar.isCarKeptDiffPostCode());
+
         populateCarOvernightLocation(yourCar.getCarKeptOvernight());
+
         populateCarPurchaseDate(yourCar.getCarPurchaseDate());
+
         populateCarRegistrationDate(yourCar.getCarRegistrationDate());
+
         populateCarCoverLevel(yourCar.getCoverLevel());
+
         setYourCarHasBeenModifiedYesOrNo(yourCar.isCarModified());
+
         moveToNextPage();
 
     }
+//
+//    private void setYourCarDetailValues(InsuranceData.YourCar yourCar, String[] carDetail) {
+//        yourCar.setCarMaker(carDetail[1]);
+//        yourCar.setCarModel(carDetail[2]+ " " +carDetail[3]+ " " +carDetail[4]);
+//    }
+//
+//    private String[] getYourCarModelDetails() {
+//        String carDetails = yourCarModel.getText();
+//        String car[] = carDetails.split(",");
+//       // String carMaker = carDetails.substring(9,carDetails.length());
+//        return car;
+//    }
 
     private void moveToNextPage() {
         next.click();
