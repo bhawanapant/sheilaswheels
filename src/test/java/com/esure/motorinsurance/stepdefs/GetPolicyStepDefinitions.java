@@ -31,10 +31,11 @@ public class GetPolicyStepDefinitions implements En {
 
     private WebDriver webDriver;
     private InsuranceData insuranceData;
+    private QuoteDetailFAPage quoteDetailFAPage;
 
 
     private Homepage homepage;
-    private YourDetailsSheilasWheelsPage yourDetailsSheilasWheelsPage;
+    private YourDetailsPage yourDetailsPage;
     private YourDetailsEsurePage yourDetailsEsurePage;
     private AboutYouPage aboutYouPage;
     private YourCarPage yourCarPage;
@@ -53,10 +54,9 @@ public class GetPolicyStepDefinitions implements En {
         url = configVariables.getUrl();
         browser = configVariables.getBrowser();
         try {
-            if(browser == null){
+            if (browser == null) {
                 browser = System.getProperty("browser");
-            }
-            else {
+            } else {
                 webDriver = Driver.getBrowser(browser);
             }
         } catch (IOException e) {
@@ -88,12 +88,10 @@ public class GetPolicyStepDefinitions implements En {
             .boostInsuranceCover(InsuranceData.BoostInsuranceCover.builder().build())
             .build();
 
-        if (url.contains("sheilaswheels")) {
-            yourDetailsSheilasWheelsPage = new YourDetailsSheilasWheelsPage(webDriver);
-            yourDetailsSheilasWheelsPage.populateYourDetails(insuranceData);
-        }
-        else
-            if (url.contains("esure")){
+        if (url.contains("sheilaswheels") || url.contains("firstalternative")) {
+            yourDetailsPage = new YourDetailsPage(webDriver);
+            yourDetailsPage.populateYourDetails(insuranceData);
+        } else if (url.contains("esure")) {
             yourDetailsEsurePage = new YourDetailsEsurePage(webDriver);
             yourDetailsEsurePage.populateYourDetailsFromEsurePage(insuranceData);
         }
@@ -110,8 +108,14 @@ public class GetPolicyStepDefinitions implements En {
         breakdownOptionPage = new BreakdownOptionPage(webDriver);
         breakdownOptionPage.selectBreakdownOptionsAndRecalculateQuote(insuranceData);
 
-        quoteDetailPage = new QuoteDetailPage(webDriver);
-        quoteDetailPage.verifyThatQuoteHasBeenCreatedWithCorrectValues(insuranceData);
+        if (url.contains("sheilaswheels")) {
+            quoteDetailPage = new QuoteDetailPage(webDriver);
+            quoteDetailPage.verifyThatQuoteHasBeenCreatedWithCorrectValues(insuranceData);
+        } else if (url.contains("firstalternative")) {
+            quoteDetailFAPage = new QuoteDetailFAPage(webDriver);
+            quoteDetailFAPage.verifyThatQuoteHasBeenCreatedWithCorrectValues(insuranceData);
+        }
+
 
     }
 

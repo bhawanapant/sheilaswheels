@@ -1,77 +1,85 @@
 package com.esure.motorinsurance.webpages;
 
 import com.esure.motorinsurance.domain.InsuranceData;
+import com.esure.motorinsurance.domain.enumType.Title;
+import com.esure.motorinsurance.utility.Driver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by bhawana on 24/05/2017.
  */
 public class YourDetailsEsurePage {
     private final WebDriver aDriver;
+    private JavascriptExecutor executor;
 
-    @FindBy(how = How.XPATH , using = "//h1[contains(text(),'Your details')]")
+    @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Your details')]")
     private WebElement yourDetailHeading;
 
-    @FindBy(how = How.XPATH , using = "//div[@class='wrapper_row']//label[1]")
+    @FindBy(how = How.CSS, using = "input#title_MR")
     private WebElement titleMr;
 
-    @FindBy(how = How.XPATH , using = "//div[@class='wrapper_row']//label[2]")
+    @FindBy(how = How.CSS, using = "input#title_MRS")
     private WebElement titleMrs;
 
-    @FindBy(how = How.XPATH , using = "//div[@class='wrapper_row']//label[3]")
+    @FindBy(how = How.CSS, using = "input#title_MIS")
     private WebElement titleMiss;
 
-    @FindBy(how = How.XPATH , using = "//div[@class='wrapper_row']//label[4]")
+    @FindBy(how = How.CSS, using = "input#title_MS")
     private WebElement titleMs;
 
-    @FindBy(how = How.XPATH , using = "//div[@class='wrapper_row']//label[5]")
+    @FindBy(how = How.CSS, using = "input#title_DR")
     private WebElement titleDr;
 
-    @FindBy(how = How.ID , using = "firstName")
+    @FindBy(how = How.ID, using = "firstName")
     private WebElement firstName;
 
-    @FindBy(how = How.ID , using = "lastName")
+    @FindBy(how = How.ID, using = "lastName")
     private WebElement surName;
 
-    @FindBy(how = How.ID , using = "email")
+    @FindBy(how = How.ID, using = "email")
     private WebElement email;
 
-    @FindBy(how = How.ID , using = "confirmEmail")
+    @FindBy(how = How.ID, using = "confirmEmail")
     private WebElement confirmEmail;
 
-    @FindBy(how = How.ID , using = "phoneNight")
+    @FindBy(how = How.ID, using = "phoneNight")
     private WebElement phoneNumber;
 
-    @FindBy(how = How.ID , using = "claimsFlag_0")
+    @FindBy(how = How.ID, using = "claimsFlag_0")
     private WebElement moterClaimYes;
 
-    @FindBy(how = How.ID , using = "claimsFlag_1")
+    @FindBy(how = How.ID, using = "claimsFlag_1")
     private WebElement moterClaimNo;
 
-    @FindBy(how = How.ID , using = "convictionsFlag_0")
+    @FindBy(how = How.ID, using = "convictionsFlag_0")
     private WebElement motorConvictionYes;
 
-    @FindBy(how = How.ID , using = "convictionsFlag_1")
+    @FindBy(how = How.ID, using = "convictionsFlag_1")
     private WebElement motorConvictionNo;
 
-    @FindBy(how = How.ID , using = "noOfAdditionalDrivers_0")
+    @FindBy(how = How.ID, using = "noOfAdditionalDrivers_0")
     private WebElement additionalDriverYes;
 
-    @FindBy(how = How.ID , using = "noOfAdditionalDrivers_1")
+    @FindBy(how = How.ID, using = "noOfAdditionalDrivers_1")
     private WebElement additionalDriverNo;
 
-    @FindBy(how = How.XPATH , using = "//input[@id='next']")
+    @FindBy(how = How.XPATH, using = "//input[@id='next']")
     private WebElement nextPage;
 
     public YourDetailsEsurePage(WebDriver aDriver) {
         this.aDriver = aDriver;
+        executor = (JavascriptExecutor) aDriver;
+        PageFactory.initElements(aDriver, this);
+
     }
 
     public void populateYourDetailsFromEsurePage(InsuranceData insuranceData) {
-       // Driver.waitForElementToLoad(yourDetailHeading);
+        Driver.waitForElementToLoad(yourDetailHeading);
 
         InsuranceData.YourDetails yourDetails = insuranceData.getYourDetails();
         InsuranceData.MotorClaims motorClaims = insuranceData.getMotorClaims();
@@ -95,26 +103,19 @@ public class YourDetailsEsurePage {
     }
 
     private void setTitle(String value) {
-        if (value.equals("Mr")){
-            titleMr.click();
+        if (value.equals(Title.MR.getValue())) {
+            executor.executeScript("arguments[0].click();", titleMr);
+        } else if (value.equals(Title.MRS.getValue())) {
+            executor.executeScript("arguments[0].click();", titleMrs);
+        } else if (value.equals(Title.MISS.getValue())) {
+            executor.executeScript("arguments[0].click();", titleMiss);
+        } else if (value.equals(Title.MS.getValue())) {
+            executor.executeScript("arguments[0].click();", titleMs);
+        } else if (value.equals(Title.DR.getValue())) {
+            executor.executeScript("arguments[0].click();", titleDr);
         }
-        else
-            if (value.equals("Mrs")){
-            titleMrs.click();
-            }
-            else
-                if (value.equals("Miss")){
-                titleMiss.click();
-                }
-                else
-                    if (value.equals("Ms")){
-                    titleMs.click();
-                    }
-                    else
-                        if (value.equals("Dr")){
-                        titleDr.click();
-                        }
     }
+
     public void setFirstName(String firstName) {
         this.firstName.sendKeys(firstName);
     }
@@ -133,16 +134,29 @@ public class YourDetailsEsurePage {
 
 
     public void setMotorClaimYesOrNo(boolean motorClaimFlag) {
-        (motorClaimFlag ? moterClaimYes : moterClaimNo).click();
+        if (motorClaimFlag) {
+            executor.executeScript("arguments[0].click();", moterClaimYes);
+        } else {
+            executor.executeScript("arguments[0].click();", moterClaimNo);
+        }
     }
 
     public void setMotorConvictionYesOrNo(boolean motorConvictionFlag) {
-        (motorConvictionFlag ? motorConvictionYes : motorConvictionNo).click();
+        if (motorConvictionFlag) {
+            executor.executeScript("arguments[0].click();", motorConvictionYes);
+        } else {
+            executor.executeScript("arguments[0].click();", motorConvictionNo);
+        }
     }
 
     public void setAdditionalDriverFlag(boolean addtionalDriverFlag) {
-        (addtionalDriverFlag ? additionalDriverYes : additionalDriverNo).click();
+        if (addtionalDriverFlag) {
+            executor.executeScript("arguments[0].click();", additionalDriverYes);
+        } else {
+            executor.executeScript("arguments[0].click();", additionalDriverNo);
+        }
     }
+
     public void moveToNextPage() {
         nextPage.click();
     }

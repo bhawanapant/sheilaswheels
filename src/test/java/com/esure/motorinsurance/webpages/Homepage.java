@@ -19,6 +19,9 @@ public class Homepage {
     @FindBy(how = How.CSS , using = "a[href='https://www.sheilaswheels.com/new/motor']" )
     private WebElement sheilasMotorLink;
 
+    @FindBy(how = How.CSS , using = "a[href='https://www.firstalternative.com/new/motor']" )
+    private WebElement firstAlternativeLink;
+
     public Homepage(WebDriver driver) {
         this.aDriver = driver;
         PageFactory.initElements(driver,this);
@@ -32,7 +35,11 @@ public class Homepage {
             if (url.contains("sheilaswheels")) {
                 Driver.waitForElementToLoad(sheilasMotorLink);
                 sheilasMotorLink.click();
-            }
+            } else
+                if (url.contains("firstalternative")){
+                    Driver.waitForElementToLoad(firstAlternativeLink);
+                    firstAlternativeLink.click();
+                }
     }
 
 }

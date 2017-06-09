@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * Created by bhawana on 23/04/2017.
  */
-public class YourDetailsSheilasWheelsPage {
+public class YourDetailsPage {
     private final WebDriver aDriver;
 
     @FindBy(how = How.XPATH , using = "//h1[contains(text(),'Your details')]")
@@ -63,7 +63,7 @@ public class YourDetailsSheilasWheelsPage {
     @FindBy(how = How.XPATH , using = "//input[@id='next']")
     private WebElement nextPage;
 
-    public YourDetailsSheilasWheelsPage(WebDriver driver) {
+    public YourDetailsPage(WebDriver driver) {
         this.aDriver = driver;
         PageFactory.initElements(driver,this);
     }

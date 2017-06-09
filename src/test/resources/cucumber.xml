@@ -18,5 +18,9 @@
     <beans profile="esure">
         <context:property-placeholder location="classpath:config/application-esure.properties" order="1" ignore-unresolvable="true"/>
     </beans>
+    <beans  profile="fa">
+        <context:property-placeholder location="classpath:config/application-fa.properties" order="1" ignore-unresolvable="true" />
+    </beans>
+
 
 </beans>

@@ -1,17 +1,15 @@
 package com.esure.motorinsurance.webpages;
 
+import com.esure.motorinsurance.domain.InsuranceData;
 import com.esure.motorinsurance.domain.enumType.BoostCover;
 import com.esure.motorinsurance.utility.Driver;
-import com.esure.motorinsurance.domain.InsuranceData;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Random;
 
@@ -79,10 +77,6 @@ public class YourQuotePage {
         javascriptExecutor = (JavascriptExecutor)aDriver;
     }
 
-    private void waitForInsuranceToBeRecalculated() {
-        new WebDriverWait(aDriver,30).until(ExpectedConditions.invisibilityOf(recalculateDialog));
-    }
-
     private void moveToNextPage() {
         next.click();
     }
@@ -129,7 +123,7 @@ public class YourQuotePage {
         Driver.waitForElementToLoad(thankYouMessage);
         boostYourCoverWithOptionalExtras(boostInsuranceCover.getBoostCover());
         clickOnRecalculate();
-        waitForInsuranceToBeRecalculated();
+        Driver.waitForInsuranceToBeRecalculated(recalculateDialog);
         selectNCDProtection(boostInsuranceCover.isNcdProtection());
         selectYourExcessProtection();
         moveToNextPage();

@@ -23,7 +23,7 @@ public class Driver {
 
     public static WebDriver getBrowser(String browser) throws IOException {
         if (webDriver == null) {
-            switch (browser){
+            switch (browser) {
                 case "firefox":
                     String geckoDriverLocation = Driver.class.getResource("/tools/geckodriver").getPath();
                     System.setProperty("webdriver.gecko.driver", geckoDriverLocation);
@@ -38,7 +38,7 @@ public class Driver {
                     webDriver = new ChromeDriver();
                     break;
             }
-           // quitBrowserOnceTestIsComplete();
+             quitBrowserOnceTestIsComplete();
         }
         return webDriver;
     }
@@ -54,8 +54,14 @@ public class Driver {
 
 
     public static void waitForElementToLoad(WebElement checkingElement) {
-        wait = new WebDriverWait(webDriver,30);
+        wait = new WebDriverWait(webDriver, 30);
         wait.until(ExpectedConditions.visibilityOf(checkingElement));
+    }
+
+    public static void waitForInsuranceToBeRecalculated(WebElement processingWindow) {
+        wait = new WebDriverWait(webDriver, 30);
+        wait.until(ExpectedConditions.invisibilityOf(processingWindow));
+
     }
 }
 

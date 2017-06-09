@@ -9,7 +9,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.LocalDate;
 
@@ -18,7 +17,6 @@ import java.time.LocalDate;
  */
 public class YourCarPage {
     private final WebDriver aDriver;
-    private WebDriverWait wait;
 
     @FindBy(how = How.XPATH , using = "//h1[contains(text(),'Your car')]")
     private WebElement yourCarHeading;

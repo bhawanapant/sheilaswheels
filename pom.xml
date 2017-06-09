@@ -152,7 +152,7 @@
                 <spring-profile>sw</spring-profile>
             </properties>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
         <profile>
@@ -161,7 +161,18 @@
                 <spring-profile>esure</spring-profile>
             </properties>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+        </profile>
+
+        <profile>
+            <id>firstalternative</id>
+            <properties>
+                <spring-profile>fa</spring-profile>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
             </activation>
 
         </profile>

@@ -21,14 +21,14 @@ public class InsuranceData {
     private AdditionalPartner additionalPartner;
     private BoostInsuranceCover boostInsuranceCover;
 
-        public static class InsuranceData1Builder{
-            private YourDetails yourDetails = YourDetails.builder().build();
-            private AboutYou aboutYou = AboutYou.builder().build();
-            private YourCar yourCar = YourCar.builder().build();
-            private MotorClaims motorClaims = MotorClaims.builder().build();
-            private AdditionalPartner additionalPartner = AdditionalPartner.builder().build();
-            private BoostInsuranceCover boostInsuranceCover = BoostInsuranceCover.builder().build();
-        }
+    public static class InsuranceData1Builder {
+        private YourDetails yourDetails = YourDetails.builder().build();
+        private AboutYou aboutYou = AboutYou.builder().build();
+        private YourCar yourCar = YourCar.builder().build();
+        private MotorClaims motorClaims = MotorClaims.builder().build();
+        private AdditionalPartner additionalPartner = AdditionalPartner.builder().build();
+        private BoostInsuranceCover boostInsuranceCover = BoostInsuranceCover.builder().build();
+    }
 
     @Builder
     @Data
@@ -43,23 +43,23 @@ public class InsuranceData {
         private boolean isMainDriver;
         private boolean isFirstTimeBuyer;
 
-        public static class YourDetailsBuilder{
-                private Title title = Title.MRS;
-                private String firstName = "Bhawana";
-                private String lastName = "Pant";
-                private String emailAddress = "no.one@esure.com";
-                private String phoneNumber = "08998478869";
-                private String additionalPhoneNumber = "07667898878";
-                private boolean addPartner = false;
-                private boolean isMainDriver = true;
-                private boolean isFirstTimeBuyer = true;
+        public static class YourDetailsBuilder {
+            private Title title = Title.MRS;
+            private String firstName = "Bhawana";
+            private String lastName = "Pant";
+            private String emailAddress = "no_one1@esure.com";
+            private String phoneNumber = "07667898898";
+            private String additionalPhoneNumber = "07667898878";
+            private boolean addPartner = false;
+            private boolean isMainDriver = true;
+            private boolean isFirstTimeBuyer = true;
 
         }
     }
 
     @Builder
     @Data
-    public static class AboutYou{
+    public static class AboutYou {
         private LocalDate dob;
         private boolean ukResident;
         private EmploymentStatus employmentStatus;
@@ -80,28 +80,28 @@ public class InsuranceData {
         private String registrationNo;
         private String postcode;
 
-            public static class AboutYouBuilder{
-                private LocalDate dob = LocalDate.of(1985, 04, 25);
-                private boolean ukResident = true;
-                private EmploymentStatus employmentStatus = EmploymentStatus.EMPLOYED;
-                private String occupation = "Computer Engineer";
-                private String industry = "Insurance";
-                private boolean secondOccupation = false;
-                private Gender gender = Gender.FEMALE;
-                private MaritalStatus maritalStatus = MaritalStatus.MARRIED;
-                private NoOfChildrenAtAddress childrenatAddress = NoOfChildrenAtAddress.TWO;
-                private ResidentialStatus residentialStatus = ResidentialStatus.HOMEOWNER;
-                private CarInHousehold carInHousehold = CarInHousehold.TWO;
-                private AccessToAnyVehicle accessOfVehicle = AccessToAnyVehicle.NO;
-                private LicenceType licenceType = LicenceType.FULLUKLICENCE;
-                private LicenceHeldYear licenceHeldYear = LicenceHeldYear.FIVEYEARS;
-                private NCDYear ncdYear = NCDYear.EIGHTYEARS;
-                private LocalDate coverStartDate = LocalDate.of(2017, 04, 02);
-                private LocalDate coverEndDate;
-                private String registrationNo = "BL64 PKO";
-                private String postcode = "TW18 4EZ";
-            }
+        public static class AboutYouBuilder {
+            private LocalDate dob = LocalDate.of(1985, 04, 25);
+            private boolean ukResident = true;
+            private EmploymentStatus employmentStatus = EmploymentStatus.EMPLOYED;
+            private String occupation = "Computer Engineer";
+            private String industry = "Insurance";
+            private boolean secondOccupation = false;
+            private Gender gender = Gender.FEMALE;
+            private MaritalStatus maritalStatus = MaritalStatus.MARRIED;
+            private NoOfChildrenAtAddress childrenatAddress = NoOfChildrenAtAddress.TWO;
+            private ResidentialStatus residentialStatus = ResidentialStatus.HOMEOWNER;
+            private CarInHousehold carInHousehold = CarInHousehold.TWO;
+            private AccessToAnyVehicle accessOfVehicle = AccessToAnyVehicle.NO;
+            private LicenceType licenceType = LicenceType.FULLUKLICENCE;
+            private LicenceHeldYear licenceHeldYear = LicenceHeldYear.FIVEYEARS;
+            private NCDYear ncdYear = NCDYear.EIGHTYEARS;
+            private LocalDate coverStartDate = LocalDate.of(2017, 04, 02);
+            private LocalDate coverEndDate;
+            private String registrationNo = "BL64 PKO";
+            private String postcode = "TW18 4EZ";
         }
+    }
 
     @Builder
     @Data
@@ -127,27 +127,27 @@ public class InsuranceData {
         private YearOfClaimFreeOnVehicle yearOfClaimFreeOnVehicle;
 
         public static class YourCarBuilder {
-                private String carMaker = "";
-                private String carModel = "";
-                private String fuelType = "";
-                private String transmissionType = "";
-                private LocalDate carRegistrationDate = LocalDate.of(2016, 01, 20);
-                private int estimateValue = 7799;
-                private Mileage mileage = Mileage.UPTO17000;
-                private CarKeptOvernight carKeptOvernight = CarKeptOvernight.DRIVEAWAY;
-                private LocalDate carPurchaseDate = LocalDate.of(2017, 04, 25);
-                private SecurityDevice securityDevice = SecurityDevice.NONEFITTED;
-                private LegalOwnerOfCar legalOwnerOfCar = LegalOwnerOfCar.PROPOSER;
-                private RegisterKeeperOfCar registerKeeperOfCar = RegisterKeeperOfCar.PROPOSER;
-                private boolean isTrackingDeviceFitted = false;
-                private UseOfCar useOfCar = UseOfCar.SOCIALDOMESTICANDPLEASURE;
-                private CoverLevel coverLevel = CoverLevel.COMPREHENSIVE;
-                private boolean CarModified = false;
-                private boolean isCarKeptDiffPostCode = false;
-                private ExpDrivingAnotherVehicle expDrivingAnotherVehicle = ExpDrivingAnotherVehicle.NONE;
-                private YearOfClaimFreeOnVehicle yearOfClaimFreeOnVehicle = UNDERONEYEAR;
-            }
+            private String carMaker = "";
+            private String carModel = "";
+            private String fuelType = "";
+            private String transmissionType = "";
+            private LocalDate carRegistrationDate = LocalDate.of(2016, 01, 20);
+            private int estimateValue = 7799;
+            private Mileage mileage = Mileage.UPTO17000;
+            private CarKeptOvernight carKeptOvernight = CarKeptOvernight.DRIVEAWAY;
+            private LocalDate carPurchaseDate = LocalDate.of(2017, 04, 25);
+            private SecurityDevice securityDevice = SecurityDevice.NONEFITTED;
+            private LegalOwnerOfCar legalOwnerOfCar = LegalOwnerOfCar.PROPOSER;
+            private RegisterKeeperOfCar registerKeeperOfCar = RegisterKeeperOfCar.PROPOSER;
+            private boolean isTrackingDeviceFitted = false;
+            private UseOfCar useOfCar = UseOfCar.SOCIALDOMESTICANDPLEASURE;
+            private CoverLevel coverLevel = CoverLevel.COMPREHENSIVE;
+            private boolean CarModified = false;
+            private boolean isCarKeptDiffPostCode = false;
+            private ExpDrivingAnotherVehicle expDrivingAnotherVehicle = ExpDrivingAnotherVehicle.NONE;
+            private YearOfClaimFreeOnVehicle yearOfClaimFreeOnVehicle = UNDERONEYEAR;
         }
+    }
 
     @Builder
     @Data
@@ -155,7 +155,7 @@ public class InsuranceData {
         private boolean motorClaims;
         private boolean motorConviction;
 
-        public static class MotorClaimsBuilder{
+        public static class MotorClaimsBuilder {
             boolean motorClaims = false;
             boolean motorConviction = false;
 
@@ -178,14 +178,14 @@ public class InsuranceData {
 
     @Builder
     @Data
-    public static class BoostInsuranceCover{
+    public static class BoostInsuranceCover {
         private double monthlyCost;
         private double annualPremium;
         private BoostCover boostCover;
         private boolean ncdProtection;
         private BreakDown breakDown;
 
-        public static class BoostInsuranceCoverBuilder{
+        public static class BoostInsuranceCoverBuilder {
             private double monthlyCost = 0.0;
             private double annualPremium = 0.0;
             private BoostCover boostCover = BoostCover.MOTORLEGALPROTECTION;

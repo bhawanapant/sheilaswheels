@@ -11,10 +11,10 @@ Scenario Outline: Browse to Car Insurance page
   Examples:
     | Title          |EmploymentStatus          |MaritalStatus            |ResidentialStatus  |
     | Mrs            |Employed                  |Married/Civil Partnership|Home owner         |
-#    | Miss           |In Education              |Single                   |Renting            |
-#    | Ms             |Self Employed             |Living with Partner      |Living with parents|
-#    | Dr             |Voluntary                 |Widowed                  |Housing association|
-#    | Professor      |Independent Means         |Divorced                 |Other              |
-#    | Lady           |Not Employed              |Single                   |Renting            |
-#    | Dame           |Retired                   |Widowed                  |Home owner         |
-#    | Rt. Honourable |Housewife / House Husband |Divorced                 |Housing association|
+    | Miss           |In Education              |Single                   |Renting            |
+    | Ms             |Self Employed             |Living with Partner      |Living with parents|
+    | Dr             |Voluntary                 |Widowed                  |Housing association|
+    | Professor      |Independent Means         |Divorced                 |Other              |
+    | Lady           |Not Employed              |Single                   |Renting            |
+    | Dame           |Retired                   |Widowed                  |Home owner         |
+    | Rt. Honourable |Housewife / House Husband |Divorced                 |Housing association|

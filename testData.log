@@ -1,0 +1,124 @@
+79974 [main] INFO  c.e.m.s.GetPolicyStepDefinitions - Final Quote Details for Motor Insurance is {
+  "yourDetails" : {
+    "title" : "MRS",
+    "firstName" : "Bhawana",
+    "lastName" : "Pant",
+    "emailAddress" : "no_one1@esure.com",
+    "phoneNumber" : "07667898898",
+    "additionalPhoneNumber" : "07667898878",
+    "addPartner" : false,
+    "mainDriver" : true,
+    "firstTimeBuyer" : true
+  },
+  "aboutYou" : {
+    "dob" : {
+      "year" : 1985,
+      "month" : "APRIL",
+      "dayOfMonth" : 25,
+      "dayOfWeek" : "THURSDAY",
+      "era" : "CE",
+      "dayOfYear" : 115,
+      "leapYear" : false,
+      "monthValue" : 4,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      }
+    },
+    "ukResident" : true,
+    "employmentStatus" : "EMPLOYED",
+    "occupation" : "Computer Engineer",
+    "industry" : "Insurance",
+    "secondOccupation" : false,
+    "gender" : "FEMALE",
+    "maritalStatus" : "MARRIED",
+    "childrenatAddress" : "TWO",
+    "residentialStatus" : "HOMEOWNER",
+    "carInHousehold" : "TWO",
+    "accessOfVehicle" : "NO",
+    "licenceType" : "FULLUKLICENCE",
+    "licenceHeldYear" : "FIVEYEARS",
+    "ncdYear" : "EIGHTYEARS",
+    "coverStartDate" : {
+      "year" : 2017,
+      "month" : "APRIL",
+      "dayOfMonth" : 2,
+      "dayOfWeek" : "SUNDAY",
+      "era" : "CE",
+      "dayOfYear" : 92,
+      "leapYear" : false,
+      "monthValue" : 4,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      }
+    },
+    "coverEndDate" : null,
+    "registrationNo" : "BL64 PKO",
+    "postcode" : "TW18 4EZ"
+  },
+  "yourCar" : {
+    "carMaker" : "",
+    "carModel" : "",
+    "fuelType" : "",
+    "transmissionType" : "",
+    "carRegistrationDate" : {
+      "year" : 2016,
+      "month" : "JANUARY",
+      "dayOfMonth" : 20,
+      "dayOfWeek" : "WEDNESDAY",
+      "era" : "CE",
+      "dayOfYear" : 20,
+      "leapYear" : true,
+      "monthValue" : 1,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      }
+    },
+    "estimateValue" : 7799,
+    "mileage" : "UPTO17000",
+    "carKeptOvernight" : "DRIVEAWAY",
+    "carPurchaseDate" : {
+      "year" : 2017,
+      "month" : "APRIL",
+      "dayOfMonth" : 25,
+      "dayOfWeek" : "TUESDAY",
+      "era" : "CE",
+      "dayOfYear" : 115,
+      "leapYear" : false,
+      "monthValue" : 4,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      }
+    },
+    "securityDevice" : "NONEFITTED",
+    "legalOwnerOfCar" : "PROPOSER",
+    "registerKeeperOfCar" : "PROPOSER",
+    "useOfCar" : "SOCIALDOMESTICANDPLEASURE",
+    "coverLevel" : "COMPREHENSIVE",
+    "expDrivingAnotherVehicle" : "NONE",
+    "yearOfClaimFreeOnVehicle" : "UNDERONEYEAR",
+    "trackingDeviceFitted" : false,
+    "carModified" : false,
+    "carKeptDiffPostCode" : false
+  },
+  "motorClaims" : {
+    "motorClaims" : false,
+    "motorConviction" : false
+  },
+  "additionalPartner" : {
+    "additionalDriverClaims" : false,
+    "additionalDriverConviction" : false,
+    "additionalDriver" : false
+  },
+  "boostInsuranceCover" : {
+    "monthlyCost" : 0.0,
+    "annualPremium" : 0.0,
+    "boostCover" : "MOTORLEGALPROTECTION",
+    "ncdProtection" : false,
+    "breakDown" : "RSA_HR_RECOVERY"
+  }
+}
+79976 [main] INFO  c.e.m.s.GetPolicyStepDefinitions - Quote Details are correct
